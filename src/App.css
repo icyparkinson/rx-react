@@ -1,0 +1,16 @@
+*{
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: sans-serif;
+  background-color: rgb(70, 139, 230);
+  color: rgb(43, 41, 64);
+}
+
+nav{
+  
+}
+
+nav li{
+  color: white;
+}
