@@ -1,20 +1,54 @@
 import React from "react"
+import { NavLink } from "react-router-dom"
 
 const NavBar = () => {
-    const navList = ["", "Day Calc", "Vaccine", "Abx"]
-    const navMenu = navList.map( (item) =>{
-        return <li style = {navListStyle}>{item}</li>
-    })
-
     return(
-    <nav style = {navStyle}>
-        <ul>
-            <li>Reset</li>
-           {navMenu}
-        </ul>
-    </nav>
+            // const navList = ["Home", "Day Calc", "Vaccine", "Abx"]
+        <nav>
+            <NavLink
+            className = "navbarItem"
+            activeClassName = "is-active"
+            to = "/"
+            exact
+            >
+                Home
+            </NavLink>
+
+            <NavLink
+            className = "navbarItem"
+            activeClassName = "is-active"
+            to = "/daycalc"
+            exact
+            >
+                Day Calculator
+            </NavLink>
+
+            <NavLink
+            className = "navbarItem"
+            activeClassName = "is-active"
+            to = "/vaccine"
+            exact
+            >
+                Vaccine
+            </NavLink>
+
+            <NavLink
+            className = "navbarItem"
+            activeClassName = "is-active"
+            to = "/abx"
+            exact
+            >
+                Abx
+            </NavLink>
+
+        </nav>
+    
+
+
     )
+
 }
+
 
 const navStyle = {
     display: "flexbox", 
