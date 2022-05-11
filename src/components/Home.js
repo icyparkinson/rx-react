@@ -2,7 +2,10 @@ import React from "react"
 
 const Home = () => {
     return(
-        <p>This is homepage</p>
+        <section style = {{backgroundColor: "green"}}>
+            <p style = {{color: "red"}}>This is homepage</p>
+            <p>Select from options above!</p>
+        </section>
     )
 }
 

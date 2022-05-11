@@ -1,10 +1,21 @@
 import React from "react"
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom"
+import Home from "./Home"
+import DayCalc from "./DayCalc"
+import Vaccine from "./Vaccine"
+import Abx from "./Abx"
+
 
 const WorkSpace = () => {
     return(
         <div style = {{margin: "100 auto"}}>
             <section style = {workSpaceStyle}>
-                <p>Select from options above!</p>
+                <Routes>
+                <Route exact path = "/" element = {<Home/>} />
+                <Route path = "/daycalc" element = {<DayCalc/>} />
+                <Route path = "/vaccine" element = {<Vaccine />} />
+                <Route path = "/abx" element = {<Abx />} />
+                </Routes> 
             </section>
         </div>
     )
@@ -15,7 +26,8 @@ const workSpaceStyle = {
     border: "1px solid black",
     width: "80%",
     height: "500px",
-    margin: "100px auto"
+    margin: "100px auto",
+    backgroundColor: "yellow"
 }
 
 export default WorkSpace
