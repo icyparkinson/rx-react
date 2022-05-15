@@ -1,13 +1,37 @@
 import React from "react"
 import { NavLink } from "react-router-dom"
+import styled from "styled-components"
+
+const StyledLink = styled.ul`
+
+    a.navbarItem.active{
+        color: white;
+    }
+
+    .navbarItem{
+        text-decoration: none;
+        color: orange;
+        padding: 0 30px;
+        line-height: 5px;
+        &:hover{
+            color: blue;
+            border-bottom: 2px solid blue;
+        }
+        }
+    }
+
+    `;
 
 const NavBar = () => {
+
+
     return(
-            // const navList = ["Home", "Day Calc", "Vaccine", "Abx"]
-        <nav>
+        <StyledLink>
+        <nav style = {{textAlign: "center", paddingTop: "30px"}}>
+            
             <NavLink
             className = "navbarItem"
-            activeClassName = "is-active"
+            activeClassName = "isActive"
             to = "/"
             exact
             >
@@ -16,7 +40,7 @@ const NavBar = () => {
 
             <NavLink
             className = "navbarItem"
-            activeClassName = "is-active"
+            activeClassName = "isActive"
             to = "/daycalc"
             exact
             >
@@ -25,7 +49,7 @@ const NavBar = () => {
 
             <NavLink
             className = "navbarItem"
-            activeClassName = "is-active"
+            activeClassName = "isActive"
             to = "/vaccine"
             exact
             >
@@ -34,15 +58,15 @@ const NavBar = () => {
 
             <NavLink
             className = "navbarItem"
-            activeClassName = "is-active"
+            activeClassName = "isActive"
             to = "/abx"
             exact
             >
                 Abx
             </NavLink>
-
+            
         </nav>
-    
+        </StyledLink>
 
 
     )
