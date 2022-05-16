@@ -10,6 +10,7 @@ const StyledLink = styled.ul`
 
     .navbarItem{
         text-decoration: none;
+        font-family: Tahoma;
         color: orange;
         padding: 0 30px;
         line-height: 5px;
@@ -73,16 +74,5 @@ const NavBar = () => {
 
 }
 
-
-const navStyle = {
-    display: "flexbox", 
-    textAlign: "center",
-    marginTop: "30px",
-}
-
-const navListStyle = {
-    display: "inline",
-    padding: "25px",
-}
 
 export default NavBar

@@ -1,5 +1,5 @@
 import React from "react"
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom"
+import { Routes, Route } from "react-router-dom"
 import Home from "./Home"
 import DayCalc from "./DayCalc"
 import Vaccine from "./Vaccine"
@@ -26,7 +26,7 @@ const workSpaceStyle = {
     border: "1px solid black",
     width: "80%",
     height: "500px",
-    margin: "100px auto",
+    margin: "50px auto",
     backgroundColor: "yellow"
 }
 
