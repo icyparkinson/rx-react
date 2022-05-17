@@ -16,6 +16,20 @@ const DayCalc = () => {
         setDate(newDate)
     }
 
+    const [nextFillDate, setNextFillDate] = useState("")
+
+    const handleNextFillDate = ({ target }) => {
+        const nextDate = target.value
+        setNextFillDate(nextDate)
+    }
+
+    const [lastFillDate, setLastFillDate] = useState("")
+
+    const handleLastFillDate = ({ target }) => {
+        const lastDate = target.value
+        setLastFillDate(lastDate)
+    }
+
     
     return(
         <div>
@@ -31,10 +45,11 @@ const DayCalc = () => {
             <section style= {{borderTop: "2px solid red", height: "15px"}}></section>
             
             <span> Last fill date: </span>
-            <input type = "date"></input>
+            <input type = "date" onChange = {handleLastFillDate}></input>
             <span> plus: </span>
-            <input style = {{width: "40px"}}></input>
+            <input style = {{width: "40px"}} onChange = {handleNextFillDate}></input>
             <span> days</span>
+            <p>Result: {lastFillDate}</p>
         
         </div>
     )
