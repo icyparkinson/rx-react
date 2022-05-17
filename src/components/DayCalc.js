@@ -27,7 +27,9 @@ const DayCalc = () => {
 
     const handleLastFillDate = ({ target }) => {
         const lastDate = target.value
-        setLastFillDate(lastDate)
+        const editDate = new Date(lastDate)
+        const lastDateInMs = Number(editDate.getTime())
+        setLastFillDate(lastDateInMs)
     }
 
     
@@ -49,8 +51,8 @@ const DayCalc = () => {
             <span> plus: </span>
             <input style = {{width: "40px"}} onChange = {handleNextFillDate}></input>
             <span> days</span>
-            <p>Result: {lastFillDate}</p>
-        
+            <p>Result: {  (new Date(lastFillDate - convertDayToMs(nextFillDate))).toDateString() }</p>
+            {console.log(convertDayToMs(nextFillDate))}
         </div>
     )
 }
