@@ -6,6 +6,9 @@ const DayCalc = () => {
         return num * 86400000
     }
 
+    //local offset in ms
+    const localOffset = 25200000
+
     const today = new Date()
 
     const [backDate, setDate] = useState("")
@@ -51,8 +54,10 @@ const DayCalc = () => {
             <span> plus: </span>
             <input style = {{width: "40px"}} onChange = {handleNextFillDate}></input>
             <span> days</span>
-            <p>Result: {  (new Date(lastFillDate - convertDayToMs(nextFillDate))).toDateString() }</p>
-            {console.log(convertDayToMs(nextFillDate))}
+            <p>Result: {  (new Date(lastFillDate + localOffset + convertDayToMs(nextFillDate))).toDateString() }</p>
+            {console.log(
+                `next fill date is ${convertDayToMs(nextFillDate)} and last fill is ${lastFillDate} which is ${new Date(lastFillDate)} and the offset is ${(new Date()).getTimezoneOffset*60000} `
+                )}
         </div>
     )
 }
