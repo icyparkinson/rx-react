@@ -27,7 +27,7 @@ const workSpaceStyle = {
     width: "80%",
     height: "500px",
     margin: "50px auto",
-    backgroundColor: "yellow"
+    backgroundColor: "#aef6c7"
 }
 
 export default WorkSpace

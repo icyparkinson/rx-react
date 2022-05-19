@@ -6,7 +6,7 @@ const DayCalc = () => {
         return num * 86400000
     }
 
-    //local offset in ms
+    //local offset in ms needed to fix problem of date coming back 1 day early
     const localOffset = 25200000
 
     const today = new Date()
@@ -40,21 +40,21 @@ const DayCalc = () => {
         <div>
             <h1>Today's date: {Date(Date.now()).toString().substr(4, 11)}</h1>
 
-            <section style= {{borderTop: "2px solid red", height: "15px"}}></section>
+            <section style= {{borderTop: "2px solid #574D68", height: "15px"}}></section>
 
             <span>Go back </span>
             <input onChange = {handleBackDate} value = {backDate} style = {{width: "40px"}}></input>
             <span> days</span>
             <p style = {{fontWeight: "bold"}}>Result: { (new Date(today.getTime() - convertDayToMs(backDate))).toDateString()  }</p>
             
-            <section style= {{borderTop: "2px solid red", height: "15px"}}></section>
+            <section style= {{borderTop: "2px solid #574D68", height: "15px"}}></section>
             
             <span> Last fill date: </span>
             <input type = "date" onChange = {handleLastFillDate}></input>
             <span> plus: </span>
             <input style = {{width: "40px"}} onChange = {handleNextFillDate}></input>
             <span> days</span>
-            <p>Result: {  (new Date(lastFillDate + localOffset + convertDayToMs(nextFillDate))).toDateString() }</p>
+            <p style = {{fontWeight: "bold"}}>Result: {  (new Date(lastFillDate + localOffset + convertDayToMs(nextFillDate))).toDateString() }</p>
             {console.log(
                 `next fill date is ${convertDayToMs(nextFillDate)} and last fill is ${lastFillDate} which is ${new Date(lastFillDate)} and the offset is ${(new Date()).getTimezoneOffset*60000} `
                 )}

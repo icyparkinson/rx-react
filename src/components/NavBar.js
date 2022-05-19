@@ -11,12 +11,12 @@ const StyledLink = styled.ul`
     .navbarItem{
         text-decoration: none;
         font-family: Tahoma;
-        color: orange;
+        color: #FE9000;
         padding: 0 30px;
         line-height: 5px;
         &:hover{
-            color: blue;
-            border-bottom: 2px solid blue;
+            color: #EEE5E9;
+            border-bottom: 2px solid #EEE5E9;
         }
         }
     }

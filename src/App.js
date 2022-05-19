@@ -6,7 +6,7 @@ import NavBar from "./components/NavBar"
 
 const App = () =>{
    return (
-    <div style = {{backgroundColor: "rgb(70, 139, 230)", height: "800px"}}>
+    <div style = {{backgroundColor: "#1f7a8c", height: "800px"}}>
       <Router>
         <NavBar />
         <WorkSpace />
