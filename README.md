@@ -1,70 +1,31 @@
-# Getting Started with Create React App
+  <img src = "#">
+  
+  <h2>Overview</h2>
+  
+ Rx Buddy is a retail pharmacist's little helper. It contains small tools to help quality of life for pharmacists in their everyday rush. These tools include a day calculator, vaccine recommendation, and a calculator for pediatric antibiotic dosing.
+  
+  <h2>How It Works</h2>
+ Use the navbar on the top of the page to easily navigate between the different functions of Rx Buddy. The tool is designed to be small so that pharmacists can have the window open off to the side of their screen while they work. Refer back to Rx Buddy throughout the day as needed!
+ 
+ 
+  <h2>Some Things I learned Making This Application</h2>
+  
+  <ul>
+    <li>How to use React hooks</li>
+    <li>How to use the Date method to do date math with user-given date inputs</li>
+    <li>How to use styled components</li>
+    <li>How to use NavLinks and styling active links</li>
+   </ul>
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+<h2>Future Update Plans:</h2>
+    <ul>
+        <li>Add ability for users to manually upload antibiotics manually</li>
+        <li>Add different color themes</li>
+    </ul>
 
-## Available Scripts
 
-In the project directory, you can run:
+<h2>Want More?</h2>
+If you'd like to see more about me, please visit my <a href="https://www.linkedin.com/in/icyparkinson/">LinkedIn</a>.
 
-### `npm start`
-
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
-
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
-
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+If you haven't given it a look yet, check out my <a href="https://sleepyanime.herokuapp.com">Anime Tracker</a>!
+    
