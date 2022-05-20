@@ -15,6 +15,7 @@
     <li>How to use the Date method to do date math with user-given date inputs</li>
     <li>How to use styled components</li>
     <li>How to use NavLinks and styling active links</li>
+    <li>How to incorporate favicon</li>
    </ul>
 
 <h2>Future Update Plans:</h2>
