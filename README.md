@@ -16,6 +16,7 @@
     <li>How to use styled components</li>
     <li>How to use NavLinks and styling active links</li>
     <li>How to incorporate favicon</li>
+    <li>How to fix page refresh problem</li>
    </ul>
 
 <h2>Future Update Plans:</h2>

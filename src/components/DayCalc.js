@@ -43,7 +43,7 @@ const DayCalc = () => {
             <section style= {{borderTop: "2px solid #574D68", height: "15px"}}></section>
 
             <span>Go back </span>
-            <input onChange = {handleBackDate} value = {backDate} style = {{width: "40px"}}></input>
+            <input onChange = {handleBackDate} style = {{width: "40px"}}></input>
             <span> days</span>
             <p style = {{fontWeight: "bold"}}>Result: { (new Date(today.getTime() - convertDayToMs(backDate))).toDateString()  }</p>
             
