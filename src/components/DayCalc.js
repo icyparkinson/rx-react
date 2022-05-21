@@ -16,12 +16,13 @@ const DayCalc = () => {
 
     //Link the input so that it can be changed when values are entered
     const handleCountDate = ({ target }) => {
-        const newCountDate = target.value
-        const countDate = new Date(newCountDate)
+        const newCountDate = target.value //2022-05-21 (correct)
+        const newStrDate = `${newCountDate.toString()} 0:0:0`
+        const countDate = new Date(newStrDate)
         const countTime = countDate.getTime() + localOffset
         const mathCount = (today.getTime() - countTime) / 86400000
-        console.log(countDate.toDateString())
-        setCountDate(mathCount)
+        console.log(countDate)
+        setCountDate(mathCount.toFixed(0))
     }
    
     const [backDate, setDate] = useState("")
@@ -56,26 +57,26 @@ const DayCalc = () => {
             <section style= {{borderTop: "2px solid #574D68", height: "15px"}}></section>
 
             Enter date: <input type = "date" onChange = {handleCountDate}></input>
-            <p style = {{fontWeight: "bold"}}>Result: {countDate}</p>
+            <p style = {{fontWeight: "bold"}}>Result: {Math.abs(countDate)} {countDate < 0 ? `days in the future` : `days ago`}</p>
 
-            <section style= {{borderTop: "2px solid #574D68", height: "15px"}}></section>
+            <section style= {{borderTop: "2px solid #574D68", height: "15px", width: "70%", margin: "0 auto"}}></section>
 
             <span>Go back </span>
-            <input onChange = {handleBackDate} style = {{width: "40px"}}></input>
+            <input type = "number" onChange = {handleBackDate} style = {{width: "40px"}}></input>
             <span> days</span>
             <p style = {{fontWeight: "bold"}}>Result: { (new Date(today.getTime() - convertDayToMs(backDate))).toDateString()  }</p>
             
-            <section style= {{borderTop: "2px solid #574D68", height: "15px"}}></section>
+            <section style= {{borderTop: "2px solid #574D68", height: "15px", width: "70%", margin: "0 auto"}}></section>
             
             <span> Last fill date: </span>
             <input type = "date" onChange = {handleLastFillDate}></input>
             <span> plus: </span>
-            <input style = {{width: "40px"}} onChange = {handleNextFillDate}></input>
+            <input type = "number" style = {{width: "40px"}} onChange = {handleNextFillDate}></input>
             <span> days</span>
             <p style = {{fontWeight: "bold"}}>Result: {  (new Date(lastFillDate + localOffset + convertDayToMs(nextFillDate))).toDateString() }</p>
-            {console.log(
+            {/* {console.log(
                 `next fill date is ${convertDayToMs(nextFillDate)} and last fill is ${lastFillDate} which is ${new Date(lastFillDate)} and the offset is ${(new Date()).getTimezoneOffset*60000} `
-                )}
+                )} */}
 
             
         </div>
