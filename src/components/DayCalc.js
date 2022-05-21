@@ -11,6 +11,19 @@ const DayCalc = () => {
 
     const today = new Date()
 
+   
+    const [countDate, setCountDate] = useState("")
+
+    //Link the input so that it can be changed when values are entered
+    const handleCountDate = ({ target }) => {
+        const newCountDate = target.value
+        const countDate = new Date(newCountDate)
+        const countTime = countDate.getTime() + localOffset
+        const mathCount = (today.getTime() - countTime) / 86400000
+        console.log(countDate.toDateString())
+        setCountDate(mathCount)
+    }
+   
     const [backDate, setDate] = useState("")
 
     //Link the input so that it can be changed when values are entered
@@ -42,6 +55,11 @@ const DayCalc = () => {
 
             <section style= {{borderTop: "2px solid #574D68", height: "15px"}}></section>
 
+            Enter date: <input type = "date" onChange = {handleCountDate}></input>
+            <p style = {{fontWeight: "bold"}}>Result: {countDate}</p>
+
+            <section style= {{borderTop: "2px solid #574D68", height: "15px"}}></section>
+
             <span>Go back </span>
             <input onChange = {handleBackDate} style = {{width: "40px"}}></input>
             <span> days</span>
@@ -58,6 +76,8 @@ const DayCalc = () => {
             {console.log(
                 `next fill date is ${convertDayToMs(nextFillDate)} and last fill is ${lastFillDate} which is ${new Date(lastFillDate)} and the offset is ${(new Date()).getTimezoneOffset*60000} `
                 )}
+
+            
         </div>
     )
 }
