@@ -32,36 +32,32 @@ const NavBar = () => {
             
             <NavLink
             className = "navbarItem"
-            activeClassName = "isActive"
             to = "/"
-            exact
+            exact = "true"
             >
                 Home
             </NavLink>
 
             <NavLink
             className = "navbarItem"
-            activeClassName = "isActive"
             to = "/daycalc"
-            exact
+            exact = "true"
             >
                 Day Calculator
             </NavLink>
 
             <NavLink
             className = "navbarItem"
-            activeClassName = "isActive"
             to = "/vaccine"
-            exact
+            exact = "true"
             >
                 Vaccine
             </NavLink>
 
             <NavLink
             className = "navbarItem"
-            activeClassName = "isActive"
             to = "/abx"
-            exact
+            exact = "true"
             >
                 Abx
             </NavLink>

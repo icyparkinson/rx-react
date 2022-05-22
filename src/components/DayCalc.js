@@ -19,9 +19,9 @@ const DayCalc = () => {
         const newCountDate = target.value //2022-05-21 (correct)
         const newStrDate = `${newCountDate.toString()} 0:0:0`
         const countDate = new Date(newStrDate)
-        const countTime = countDate.getTime() + localOffset
+        const countTime = countDate.getTime()
         const mathCount = (today.getTime() - countTime) / 86400000
-        console.log(countDate)
+        console.log(today.getTime())
         setCountDate(mathCount.toFixed(0))
     }
    

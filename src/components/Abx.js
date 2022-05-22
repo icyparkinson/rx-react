@@ -1,6 +1,10 @@
 import React, { useState } from "react"
 
 const Abx = () => {
+    ///////////////////////////////////
+    /////CALCULATING CHILD WEIGHT/////
+    ///////////////////////////////////
+
     //This pair takes care of the max dose/day input
     const [maxDoseInput, setMaxDoseInput] = useState("")
 
@@ -41,11 +45,23 @@ const Abx = () => {
         return volInput * (strInput / strInput2) * freqInput
     }
 
-
     //This does the math for calculating child weight in lbs
     const childWeight = (a,b) => {
         return (dosePrescribed() / maxDoseInput * 2.2).toFixed(1)
     }
+
+    ///////////////////////////////////
+    //CALCULATING STRENGTH CONVERSION//
+    ///////////////////////////////////
+
+    const [startmL, setStartmL] = useState("")
+
+    const handleStartmL = ({ target }) => {
+        const startingmL = target.value
+        setStartmL(startingmL)
+    }
+
+
 
     const inputW = {
         width: "50px",
@@ -71,9 +87,12 @@ const Abx = () => {
 
             <section style= {{borderTop: "2px solid #574D68", height: "15px"}}></section>
 
+                <h1>Calculate Strength Conversions</h1>
             <section>
-                <h1>Calculate Per Dose</h1>
-                
+                <p>Starting with: <input style = {inputW} placeholder = "mL" onChange={handleStartmL}></input>of <input style = {inputW} placeholder="mg"></input> / <input style = {inputW} placeholder="mL"></input></p>
+                <p>Equal to {}mg</p>
+                <p>Converting to: <input style = {inputW} placeholder="mg"></input> / <input style = {inputW} placeholder="mL"></input></p>
+                <p style = {{fontWeight: "bold"}}>Equivalent to: {} mL</p>
             </section>
 
         </div>
