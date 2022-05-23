@@ -102,11 +102,13 @@ const Abx = () => {
 
 
     ///////////////////////////////////
-    //SHOW OR HIDE COMMON DOSE LIST//
+    //EXTRA STUFF//
     ///////////////////////////////////
 
-
-
+    const [showList, setShowList] = useState(false)
+    const handleList = () => {
+        setShowList((prevState) => !prevState)
+    }
 
     const inputW = {
         width: "50px",
@@ -130,7 +132,8 @@ const Abx = () => {
                     <p style = {{fontWeight: "bold"}}>Child should weigh at least: {childWeight()} lbs</p>
                     {/* {console.log(dosePrescribed())} */}
                 </section>
-                <CommonDoses />
+                <p onClick= {handleList} style = {{textDecoration: "underline", cursor: "pointer"}}>Click to {showList === true ? "hide" : "show" } Notes</p>
+                {showList === true ? <CommonDoses /> : null }
             </section>
 
             <section style= {{borderTop: "2px solid #574D68", height: "15px"}}></section>
