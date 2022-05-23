@@ -57,7 +57,7 @@ const DayCalc = () => {
             <section style= {{borderTop: "2px solid #574D68", height: "15px"}}></section>
 
             Enter date: <input type = "date" onChange = {handleCountDate}></input>
-            <p style = {{fontWeight: "bold"}}>Result: {Math.abs(countDate)} {countDate < 0 ? `days in the future` : `days ago`}</p>
+            <p style = {{fontWeight: "bold"}}>Result: {Math.abs(countDate)} {countDate < 0 ? `${Math.abs(countDate) === 1 ? "day" : "days"} in the future` : `${Math.abs(countDate) === 1 ? "day" : "days"} ago`}</p>
 
             <section style= {{borderTop: "2px solid #574D68", height: "15px", width: "70%", margin: "0 auto"}}></section>
 
