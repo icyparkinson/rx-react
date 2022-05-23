@@ -17,7 +17,13 @@ const StyledLink = styled.ul`
         &:hover{
             color: #EEE5E9;
             border-bottom: 2px solid #EEE5E9;
+            }
         }
+    }
+
+    @media (max-width: 550px){
+        .navbarItem{
+            padding: 0 15px;
         }
     }
 
