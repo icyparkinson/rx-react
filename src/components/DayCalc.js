@@ -21,8 +21,8 @@ const DayCalc = () => {
         const countDate = new Date(newStrDate)
         const countTime = countDate.getTime()
         const mathCount = (today.getTime() - countTime) / 86400000
-        console.log(today.getTime())
-        setCountDate(mathCount.toFixed(0))
+        // console.log(today.getTime())
+        setCountDate(Math.floor(mathCount))
     }
    
     const [backDate, setDate] = useState("")
