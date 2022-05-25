@@ -49,6 +49,8 @@ const DayCalc = () => {
         setLastFillDate(lastDateInMs)
     }
 
+
+
     
     return(
         <div>
@@ -69,7 +71,7 @@ const DayCalc = () => {
             <section style= {{borderTop: "2px solid #574D68", height: "15px", width: "70%", margin: "0 auto"}}></section>
             
             <span> Last fill date: </span>
-            <input type = "date" onChange = {handleLastFillDate}></input>
+            <input type = "date" onChange = {handleLastFillDate} style = {{marginBottom: "15px"}}></input>
             <span> plus: </span>
             <input type = "number" style = {{width: "40px"}} onChange = {handleNextFillDate}></input>
             <span> days</span>
