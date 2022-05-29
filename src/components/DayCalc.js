@@ -49,6 +49,31 @@ const DayCalc = () => {
         setLastFillDate(lastDateInMs)
     }
 
+    const [dateOne, setdateOne] = useState("")
+
+    const handleDateOne = ({ target }) => {
+        const dateOne = target.value
+        const newStrDate = `${dateOne.toString()} 0:0:0`
+        const countDate = new Date(newStrDate)
+        const countTime = countDate.getTime()
+        setdateOne(countTime)
+        console.log(countTime)
+    }
+
+    const [dateTwo, setdateTwo] = useState("")
+
+    const handleDateTwo = ({ target }) => {
+        const dateTwo = target.value
+        const newStrDate = `${dateTwo.toString()} 0:0:0`
+        const countDate = new Date(newStrDate)
+        const countTime = countDate.getTime()
+        setdateTwo(countTime)
+    }
+
+    const differenceDate = (a,b) => {
+        return Math.abs((dateTwo - dateOne)/86400000)
+    }
+
 
 
     
@@ -80,6 +105,14 @@ const DayCalc = () => {
                 `next fill date is ${convertDayToMs(nextFillDate)} and last fill is ${lastFillDate} which is ${new Date(lastFillDate)} and the offset is ${(new Date()).getTimezoneOffset*60000} `
                 )} */}
 
+            <section style= {{borderTop: "2px solid #574D68", height: "15px", width: "70%", margin: "0 auto"}}></section>
+
+
+            <span>Between two dates:</span>
+            <p>
+            <input type = "date" onChange = {handleDateOne}></input> and <input type = "date" onChange = {handleDateTwo}></input>
+            </p>
+            <p style = {{fontWeight: "bold"}}>Result: {differenceDate()} {differenceDate() === 1 ? "day" : "days"}</p>
             
         </div>
     )
