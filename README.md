@@ -1,4 +1,4 @@
-  <img src = "public/images/readMeImg.png">
+  <img src = "public/readMeImg.png">
   
   <h2>Overview</h2>
   
@@ -22,6 +22,7 @@
 
 <h2>Future Update Plans:</h2>
     <ul>
+
         <li>Add ability for users to manually upload antibiotics manually</li>
         <li>Add different color themes</li>
     </ul>
