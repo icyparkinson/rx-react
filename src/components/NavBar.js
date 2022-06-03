@@ -67,6 +67,14 @@ const NavBar = () => {
             >
                 Abx
             </NavLink>
+
+            <NavLink
+            className = "navbarItem"
+            to = "/notes"
+            exact = "true"
+            >
+                Notes
+            </NavLink>
             
         </nav>
         </StyledLink>
