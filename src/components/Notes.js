@@ -28,6 +28,7 @@ const StyledNotes = styled.ul`
             &:hover{
             text-decoration: line-through;
             cursor: pointer;
+            background: rgb(161, 215, 202)
             }
     }
 
