@@ -5,7 +5,7 @@
  Rx Buddy is a retail pharmacist's little helper. It contains small tools to help quality of life for pharmacists in their everyday rush. These tools include a day calculator, vaccine recommendation, and a calculator for pediatric antibiotic dosing.
   
   <h2>How It Works</h2>
- Use the navbar on the top of the page to easily navigate between the different functions of Rx Buddy. The tool is designed to be small so that pharmacists can have the window open off to the side of their screen while they work. Refer back to Rx Buddy throughout the day as needed!
+ Use the navbar on the top of the page to easily navigate between the different functions of Rx Buddy. The tool is designed to be small so that pharmacists can have the window open off to the side of their screen while they work. Go to Notes page to access database of client-submitted information. Refer back to Rx Buddy throughout the day as needed!
  
  
   <h2>Some Things I learned Making This Application</h2>
@@ -17,6 +17,7 @@
     <li>How to use NavLinks and styling active links</li>
     <li>How to incorporate favicon</li>
     <li>How to fix page refresh problem</li>
+    <li>How to connect backend server with React, making this a fullstack MERN project</li>
    </ul>
 
 <h2>Future Update Plans:</h2>
