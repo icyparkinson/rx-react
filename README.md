@@ -2,7 +2,7 @@
   
   <h2>Overview</h2>
   
- Rx Buddy is a retail pharmacist's little helper. It contains small tools to help quality of life for pharmacists in their everyday rush. These tools include a day calculator, vaccine recommendation, and a calculator for pediatric antibiotic dosing.
+ Rx Buddy is a retail pharmacist's little helper. It contains small tools to help quality of life for pharmacists in their everyday rush. These tools include a day calculator, vaccine recommendation, and a calculator for pediatric antibiotic dosing. There is also a "Notes" page where users can add (and delete) useful tidbits of information to refer back to later.
   
   <h2>How It Works</h2>
  Use the navbar on the top of the page to easily navigate between the different functions of Rx Buddy. The tool is designed to be small so that pharmacists can have the window open off to the side of their screen while they work. Go to Notes page to access database of client-submitted information. Refer back to Rx Buddy throughout the day as needed!
