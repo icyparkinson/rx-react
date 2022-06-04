@@ -54,7 +54,7 @@ const Notes = () => {
 
     useEffect( () => {
         async function fetchNotes() {
-            const URL = "/notes"
+            const URL = "http://localhost:4000/notes/"
             try {
                 const res = await axios.get(URL)
                 console.log(res.data[0]._id)
@@ -80,7 +80,7 @@ const Notes = () => {
             "note": noteInput
         }
         console.log(newNote)
-        axios.post("/notes/add", newNote)
+        axios.post("http://localhost:4000/notes/add", newNote)
             .then(res => console.log(res.data))
         setNoteInput("")
         setNotes([...notes, newNote])
@@ -89,7 +89,7 @@ const Notes = () => {
     // Delete Note
 
       const deleteNote = (id) => {
-        axios.delete(`notes/${id}`)
+        axios.delete(`http://localhost:4000/notes/${id}`)
             .then(res => console.log(res.data))
             .catch((err) => console.log(err))
 
