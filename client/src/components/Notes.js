@@ -80,7 +80,7 @@ const Notes = () => {
             "note": noteInput
         }
         console.log(newNote)
-        axios.post("/notes/add", newNote)
+        axios.post("/api/notes/add", newNote)
             .then(res => console.log(res.data))
         setNoteInput("")
         setNotes([...notes, newNote])
@@ -89,7 +89,7 @@ const Notes = () => {
     // Delete Note
 
       const deleteNote = (id) => {
-        axios.delete(`/notes/${id}`)
+        axios.delete(`/api/notes/${id}`)
             .then(res => console.log(res.data))
             .catch((err) => console.log(err))
 
