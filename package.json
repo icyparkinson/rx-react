@@ -4,8 +4,9 @@
   "description": "",
   "main": "backend/server.js",
   "scripts": {
-    "start": "nodemon backend/server.js",
-    "build": "cd client && npm ci && npm run build"
+    "start": "node backend/server.js",
+    "build": "cd client && npm ci && npm run build",
+    "dev": "nodemon backend/server.js"
   },
   "author": "Icy Parkinson",
   "license": "ISC",
