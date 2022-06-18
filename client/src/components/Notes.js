@@ -88,7 +88,8 @@ const Notes = () => {
 
     // Delete Note
 
-      const deleteNote = (id) => {
+        const deleteNote = (id) => {
+            
         axios.delete(`/api/notes/${id}`)
             .then(res => console.log(res.data))
             .catch((err) => console.log(err))
