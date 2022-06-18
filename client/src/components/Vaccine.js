@@ -56,16 +56,24 @@ const Cov = () => {
 
     return(
         <section>
-            <h3 onClick= {handleShowMost} style = {{textDecoration: "underline", cursor: "pointer"}}>Most People</h3>
-            <p>{showMost === true ? <Most /> : null }</p>
+            <span onClick= {handleShowMost} style = {itemStyle}>Most People {showMost === true ? "▾" : "▸"}</span>
+            <span onClick= {handleShowImm} style = {itemStyle}>Immunocompromised {showImm === true ? "▾" : "▸"}</span>
+            <span onClick= {handleShowVials} style = {itemStyle}>Vials {showVials === true ? "▾" : "▸"}</span>
 
-            <h3 onClick= {handleShowImm} style = {{textDecoration: "underline", cursor: "pointer"}}>Immunocompromised</h3>
-            <p>{showImm === true ? <Imm /> : null }</p>
 
-            <h3 onClick= {handleShowVials} style = {{textDecoration: "underline", cursor: "pointer"}}>Vials</h3>
-            <p>{showVials === true ? <Vials /> : null }</p>
+            {showMost === true ? <Most /> : null }
+            {showImm === true ? <Imm /> : null }
+            {showVials === true ? <Vials /> : null }
+            
         </section>
     )
 }
+
+const itemStyle = {
+    // textDecoration: "underline",
+    cursor: "pointer",
+    margin: "20px"
+}
+
 
 export default Vaccine

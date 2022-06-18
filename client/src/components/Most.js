@@ -25,10 +25,11 @@ const Most = () => {
 
     return (
         <section>
-            <span onClick= {handleShowP1} style = {itemStyle}>Pfizer 5-11</span>
-            <span onClick= {handleShowP2} style = {itemStyle}>Pfizer 12+</span>
-            <span onClick= {handleShowM1} style = {itemStyle}>Moderna</span>
-            <span onClick= {handleShowJ1} style = {itemStyle}>J&J</span>
+            <p></p>
+            <span onClick= {handleShowP1} style = {itemStyle}>Pfizer 5-11 {showP1 === true ? "▾" : "▸"}</span>
+            <span onClick= {handleShowP2} style = {itemStyle}>Pfizer 12+ {showP2 === true ? "▾" : "▸"}</span>
+            <span onClick= {handleShowM1} style = {itemStyle}>Moderna {showM1 === true ? "▾" : "▸"}</span>
+            <span onClick= {handleShowJ1} style = {itemStyle}>J&J {showJ1 === true ? "▾" : "▸"}</span>
 
 
 
@@ -46,7 +47,7 @@ const Most = () => {
 }
 
 const itemStyle = {
-    textDecoration: "underline",
+    // textDecoration: "underline",
     cursor: "pointer",
     margin: "20px"
 }

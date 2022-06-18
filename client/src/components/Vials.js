@@ -20,9 +20,10 @@ const Vials = () => {
 
     return (
         <section>
-            <span onClick= {handleShowV1} style = {itemStyle}>Unpunctured</span>
-            <span onClick= {handleShowV2} style = {itemStyle}>Punctured</span>
-            <span onClick= {handleShowV3} style = {itemStyle}>Expiration Links</span>
+            <p></p>
+            <span onClick= {handleShowV1} style = {itemStyle}>Unpunctured {showV1 === true ? "▾" : "▸"}</span>
+            <span onClick= {handleShowV2} style = {itemStyle}>Punctured {showV2 === true ? "▾" : "▸"}</span>
+            <span onClick= {handleShowV3} style = {itemStyle}>Expiration Links {showV3 === true ? "▾" : "▸"}</span>
 
 
 
@@ -39,7 +40,7 @@ const Vials = () => {
 }
 
 const itemStyle = {
-    textDecoration: "underline",
+    // textDecoration: "underline",
     cursor: "pointer",
     margin: "20px"
 }

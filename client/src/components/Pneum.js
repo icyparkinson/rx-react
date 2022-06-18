@@ -7,14 +7,21 @@ const Pneum = () => {
         setShowPn((prevState) => !prevState)
     }
 
+    const [showUp, setShowUp] = useState(false)
+    const handleShowUp = () => {
+        setShowUp((prevState) => !prevState)
+    }
+
 
     return (
         <section>
-            <span onClick= {handleShowPn} style = {itemStyle}>Algorithm</span>
+            <span onClick= {handleShowPn} style = {itemStyle}>Algorithm {showPn === true ? "▾" : "▸"}</span>
             <span style = {itemStyle}><a href="https://www.cdc.gov/vaccines/vpd/pneumo/downloads/pneumo-vaccine-timing.pdf" target="_blank">Timeline Link</a></span>
+            <span onClick= {handleShowUp} style = {itemStyle}>1/27/22 Update {showUp === true ? "▾" : "▸"}</span>
                    
             
-            {showPn === true ? <Pn /> : null }            
+            {showPn === true ? <Pn /> : null } 
+            {showUp === true ? <Up /> : null }              
             
         </section>
 
@@ -23,7 +30,7 @@ const Pneum = () => {
 }
 
 const itemStyle = {
-    textDecoration: "underline",
+    // textDecoration: "underline",
     cursor: "pointer",
     margin: "20px"
 }
@@ -34,6 +41,15 @@ const Pn = () => {
         <section>
             <p></p>
             <img src="images/pneumonia.png" width="80%"/>
+        </section>
+    )
+}
+
+const Up = () => {
+    return(
+        <section>
+            <p></p>
+            <img src="images/pneum_update.png" width = "80%"></img>
         </section>
     )
 }
