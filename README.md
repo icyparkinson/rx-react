@@ -1,4 +1,4 @@
-  <img src = "public/readMeImg.png">
+  <img src = "client/public/readMeImg.png">
   
   <h2>Overview</h2>
   
