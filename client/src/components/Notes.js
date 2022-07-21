@@ -112,7 +112,8 @@ const Notes = () => {
             </form>
             <ul>
                 {notes.map( (note) => (
-                <li key = {note._id} onClick={() => deleteNote(note._id)}>{note.note}</li>
+                <li key = {note._id}>{note.note}</li>
+                // <li key = {note._id} onClick={() => deleteNote(note._id)}>{note.note}</li>
                 
             ))}
             </ul>
