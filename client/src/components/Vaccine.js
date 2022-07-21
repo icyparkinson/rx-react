@@ -29,6 +29,11 @@ const Vaccine = () => {
             <h1 onClick= {handleShowCov} style = {{textDecoration: "underline", cursor: "pointer", color: "#574D68"}}>Covid-19 Guidelines</h1>
             <p>{showCov === true ? <Cov /> : null }</p>
 
+            <section style= {{borderTop: "2px solid #574D68", height: "15px"}}></section>
+
+            <h1><a href = "https://vivotif.com/downloads/VIVOTIF_CLING-Z.pdf" target = "_blank" style = {{color: "574D68"}}>Vivotif PDF</a></h1>
+
+
 
             
             
