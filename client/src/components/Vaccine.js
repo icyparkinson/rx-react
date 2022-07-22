@@ -31,7 +31,7 @@ const Vaccine = () => {
 
             <section style= {{borderTop: "2px solid #574D68", height: "15px"}}></section>
 
-            <h1><a href = "https://vivotif.com/downloads/VIVOTIF_CLING-Z.pdf" target = "_blank" style = {{color: "574D68"}}>Vivotif (new)</a> || <a href="" >Vivotif (old)</a></h1>
+            <h1><a href="images/vivotifcap.pdf">Vivotif (old)</a> || <a href = "https://vivotif.com/downloads/VIVOTIF_CLING-Z.pdf" target = "_blank" style = {{color: "574D68"}}>Vivotif (new)</a></h1>
 
 
 
