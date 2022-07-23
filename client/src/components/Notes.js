@@ -26,13 +26,15 @@ const StyledNotes = styled.ul`
         margin: 10px;
         text-align: left;
             &:hover{
-            text-decoration: line-through;
             cursor: pointer;
             background: rgb(161, 215, 202)
             }
     }
 
 `
+
+            // text-decoration: line-through;
+
 
 const Notes = () => {
 
