@@ -68,7 +68,7 @@ const V3 = () => {
     return(
         <section>
             <ul>
-                <li><a href="https://www.fda.gov/emergency-preparedness-and-response/coronavirus-disease-2019-covid-19/comirnaty-and-pfizer-biontech-covid-19-vaccine" target="_blank">Pfizer</a></li>
+                <li><a href="https://lotexpiry.cvdvaccine.com/" target="_blank">Pfizer</a></li>
                 <li><a href="https://eua.modernatx.com/covid19vaccine-eua/providers/vial-lookup" target="_blank">Moderna</a></li>
                 <li><a href="https://vaxcheck.jnj/" target="_blank">J&J</a></li>
             </ul>
