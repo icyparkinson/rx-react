@@ -2,44 +2,44 @@ import React, { useState } from "react"
 
 const Most = () => {
 
-    const [showP1, setShowP1] = useState(false)
-    const handleShowP1 = () => {
-        setShowP1((prevState) => !prevState)
+    const [showTots, setShowTots] = useState(false)
+    const handleShowTots = () => {
+        setShowTots((prevState) => !prevState)
     }
 
-    const [showP2, setShowP2] = useState(false)
-    const handleShowP2 = () => {
-        setShowP2((prevState) => !prevState)
+    const [showPeds, setShowPeds] = useState(false)
+    const handleShowPeds = () => {
+        setShowPeds((prevState) => !prevState)
     }
 
-    const [showM1, setShowM1] = useState(false)
-    const handleShowM1 = () => {
-        setShowM1((prevState) => !prevState)
+    const [showAdults, setShowAdults] = useState(false)
+    const handleShowAdults = () => {
+        setShowAdults((prevState) => !prevState)
     }
 
-    const [showJ1, setShowJ1] = useState(false)
-    const handleShowJ1 = () => {
-        setShowJ1((prevState) => !prevState)
+    const [showJJ, setShowJJ] = useState(false)
+    const handleShowJJ = () => {
+        setShowJJ((prevState) => !prevState)
     }
 
 
     return (
         <section>
             <p></p>
-            <span onClick= {handleShowP1} style = {itemStyle}>Pfizer 5-11 {showP1 === true ? "▾" : "▸"}</span>
-            <span onClick= {handleShowP2} style = {itemStyle}>Pfizer 12+ {showP2 === true ? "▾" : "▸"}</span>
-            <span onClick= {handleShowM1} style = {itemStyle}>Moderna {showM1 === true ? "▾" : "▸"}</span>
-            <span onClick= {handleShowJ1} style = {itemStyle}>J&J {showJ1 === true ? "▾" : "▸"}</span>
+            <span onClick= {handleShowTots} style = {itemStyle}>6mo - 4yo {showTots === true ? "▾" : "▸"}</span>
+            <span onClick= {handleShowPeds} style = {itemStyle}>5yo - 11yo {showPeds === true ? "▾" : "▸"}</span>
+            <span onClick= {handleShowAdults} style = {itemStyle}>12+ {showAdults === true ? "▾" : "▸"}</span>
+            <span onClick= {handleShowJJ} style = {itemStyle}>18+ & J&J {showJJ === true ? "▾" : "▸"}</span>
 
 
 
-            {showP1 === true ? <P1 /> : null }
+            {showTots === true ? <Tots /> : null }
             
-            {showP2 === true ? <P2 /> : null }            
+            {showPeds === true ? <Peds /> : null }            
             
-            {showM1 === true ? <M1 /> : null }            
+            {showAdults === true ? <Adults /> : null }            
             
-            {showJ1 === true ? <J1 /> : null }
+            {showJJ === true ? <JJ /> : null }
         </section>
 
     )
@@ -53,34 +53,34 @@ const itemStyle = {
 }
 
 
-const P1 = () => {
+const Tots = () => {
     return(
         <section>
             <p></p>
-            <img src="images/most_pfizer.png" width="60%"/>
+            <img src="images/most_tots.png" width="60%"/>
         </section>
     )
 }
 
-const P2 = () => {
+const Peds = () => {
     return(
         <section>
             <p></p>
-            <img src="images/most_pfizer.png" width="60%"/>
+            <img src="images/most_peds.png" width="60%"/>
         </section>
     )
 }
 
-const M1 = () => {
+const Adults = () => {
     return(
         <section>
             <p></p>
-            <img src="images/most_moderna.png" width="60%"/>
+            <img src="images/most_adults.png" width="60%"/>
         </section>
     )
 }
 
-const J1 = () => {
+const JJ = () => {
     return(
         <section>
             <p></p>
