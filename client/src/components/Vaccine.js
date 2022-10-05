@@ -61,9 +61,9 @@ const Cov = () => {
 
     return(
         <section>
-            <span onClick= {handleShowMost} style = {itemStyle}>Most People {showMost === true ? "▾" : "▸"}</span>
-            <span onClick= {handleShowImm} style = {itemStyle}>Immunocompromised {showImm === true ? "▾" : "▸"}</span>
-            <span onClick= {handleShowVials} style = {itemStyle}>Vials {showVials === true ? "▾" : "▸"}</span>
+            <span onClick= {handleShowMost} style = {mostStyle}>Most People {showMost === true ? "▾" : "▸"}</span>
+            <span onClick= {handleShowImm} style = {immStyle}>Immunocompromised {showImm === true ? "▾" : "▸"}</span>
+            <span onClick= {handleShowVials} style = {vialStyle}>Vials {showVials === true ? "▾" : "▸"}</span>
 
 
             {showMost === true ? <Most /> : null }
@@ -74,10 +74,22 @@ const Cov = () => {
     )
 }
 
-const itemStyle = {
-    // textDecoration: "underline",
+const mostStyle = {
     cursor: "pointer",
-    margin: "20px"
+    margin: "20px",
+    color: "green"
+}
+
+const immStyle = {
+    cursor: "pointer",
+    margin: "20px",
+    color: "blue"
+}
+
+const vialStyle = {
+    cursor: "pointer",
+    margin: "20px",
+    color: "red"
 }
 
 
