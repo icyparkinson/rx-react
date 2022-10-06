@@ -22,18 +22,27 @@ const StyledNotes = styled.section`
         margin: 30px;
     }
 
+    .dltBtn{
+        margin-left: 10px;
+        display: none;
+    }
+
     li{
         margin: 10px;
+        padding: 5px;
         text-align: left;
             &:hover{
             cursor: pointer;
-            background: rgb(161, 215, 202)
+            background: rgb(161, 215, 202);
+                .dltBtn{
+                    display: inline;
+                }
             }
     }
 
-    .dltBtn{
-        margin-left: 10px;
-    }
+    
+
+
 
     
 
@@ -108,7 +117,7 @@ const Notes = () => {
                 {notes.map( (note) => (
                 <li key = {note._id}>
                     {note.note}
-                    <button class = "dltBtn" onClick={() => deleteNote(note._id)}>Delete</button>
+                    <button className = "dltBtn" onClick={() => deleteNote(note._id)}>Delete</button>
                 </li>
                 
                 // <li key = {note._id} onClick={() => deleteNote(note._id)}>{note.note}</li>
