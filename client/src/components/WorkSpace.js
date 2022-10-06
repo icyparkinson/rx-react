@@ -17,6 +17,7 @@ const WorkSpace = () => {
                 <Route path = "/vaccine" element = {<Vaccine />} />
                 <Route path = "/abx" element = {<Abx />} />
                 <Route path = "/notes" element = {<Notes />} />
+                <Route path = "/*" element = {<Home/>} />
                 </Routes> 
             </section>
         </div>
