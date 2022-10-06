@@ -43,7 +43,7 @@ const itemStyle = {
     // textDecoration: "underline",
     cursor: "pointer",
     margin: "20px",
-    color: "red"
+    color: "blue"
 }
 
 

@@ -50,7 +50,7 @@ const itemStyle = {
     // textDecoration: "underline",
     cursor: "pointer",
     margin: "20px",
-    color: "green"
+    color: "rgb(39	91	109)"
 }
 
 

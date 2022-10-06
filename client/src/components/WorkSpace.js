@@ -27,7 +27,7 @@ const workSpaceStyle = {
     textAlign: "center",
     border: "1px solid black",
     width: "80%",
-    height: "100vh",
+    height: "100%",
     margin: "50px auto",
     backgroundColor: "#aef6c7"
 }

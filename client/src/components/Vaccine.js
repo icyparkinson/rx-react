@@ -77,19 +77,19 @@ const Cov = () => {
 const mostStyle = {
     cursor: "pointer",
     margin: "20px",
-    color: "green"
+    color: "rgb(39	91	109)"
 }
 
 const immStyle = {
     cursor: "pointer",
     margin: "20px",
-    color: "blue"
+    color: "rgb(165	118	40)"
 }
 
 const vialStyle = {
     cursor: "pointer",
     margin: "20px",
-    color: "red"
+    color: "blue"
 }
 
 
