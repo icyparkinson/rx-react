@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react"
 import axios from "axios"
 import styled from "styled-components"
 
-const StyledNotes = styled.ul`
+const StyledNotes = styled.section`
     h1{
         text-decoration: underline;
     }
@@ -31,6 +31,12 @@ const StyledNotes = styled.ul`
             }
     }
 
+    .dltBtn{
+        margin-left: 10px;
+    }
+
+    
+
 `
 
             // text-decoration: line-through;
@@ -38,21 +44,7 @@ const StyledNotes = styled.ul`
 
 const Notes = () => {
 
-    const [notes, setNotes] = useState([
-        // {
-        //     id: 1,
-        //     note: "This is a note"
-        // }, 
-        // {
-        //     id: 2,
-        //     note: "This is another note"
-        // }
-        // axios.get("http://localhost:4000/notes/")
-        //     .then(res => {
-        //         console.log(res.data)
-        //         }
-        //     )
-    ])
+    const [notes, setNotes] = useState([]) //empty array for default notes
 
     useEffect( () => {
         async function fetchNotes() {
@@ -114,7 +106,11 @@ const Notes = () => {
             </form>
             <ul>
                 {notes.map( (note) => (
-                <li key = {note._id}>{note.note}</li>
+                <li key = {note._id}>
+                    {note.note}
+                    <button class = "dltBtn" onClick={() => deleteNote(note._id)}>Delete</button>
+                </li>
+                
                 // <li key = {note._id} onClick={() => deleteNote(note._id)}>{note.note}</li>
                 
             ))}
