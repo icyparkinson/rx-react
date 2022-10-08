@@ -3,6 +3,8 @@ import Imm from "./Imm"
 import Most from "./Most"
 import Vials from "./Vials"
 import Pneum from "./Pneum"
+import Line from "../../ui/Line"
+
 
 
 const Vaccine = () => {
@@ -24,12 +26,12 @@ const Vaccine = () => {
             <h1 onClick= {handleShowPneum} style = {{textDecoration: "underline", cursor: "pointer", color: "#574D68"}}>Pneumonia Guidelines</h1>
             <p>{showPneum === true ? <Pneum /> : null }</p>
 
-            <section style= {{borderTop: "2px solid #574D68", height: "15px"}}></section>
+            <Line width = "100%"/>
 
             <h1 onClick= {handleShowCov} style = {{textDecoration: "underline", cursor: "pointer", color: "#574D68"}}>Covid-19 Guidelines</h1>
             <p>{showCov === true ? <Cov /> : null }</p>
 
-            <section style= {{borderTop: "2px solid #574D68", height: "15px"}}></section>
+            <Line width = "100%"/>
 
             <h1><a href="images/vivotifcap.pdf">Vivotif (old)</a> || <a href = "https://vivotif.com/downloads/VIVOTIF_CLING-Z.pdf" target = "_blank" style = {{color: "574D68"}}>Vivotif (new)</a></h1>
 

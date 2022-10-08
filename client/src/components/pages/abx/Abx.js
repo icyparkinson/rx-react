@@ -1,6 +1,8 @@
 import React, { useState } from "react"
 
 import CommonDoses from "./CommonDoses"
+import Line from "../../ui/Line"
+
 
 const Abx = () => {
     ///////////////////////////////////
@@ -137,7 +139,7 @@ const Abx = () => {
                 {showList === true ? <CommonDoses /> : null }
             </section>
 
-            <section style= {{borderTop: "2px solid #574D68", height: "15px"}}></section>
+            <Line width = "100%"/>
 
                 <h1>Calculate Strength Conversions</h1>
             <section>

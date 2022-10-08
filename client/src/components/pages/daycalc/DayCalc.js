@@ -1,4 +1,5 @@
 import React, { useState } from "react"
+import Line from "../../ui/Line"
 
 const DayCalc = () => {
     //Easy day to ms converter for math later
@@ -81,20 +82,20 @@ const DayCalc = () => {
         <div>
             <h1>Today's date: {Date(Date.now()).toString().substr(4, 11)}</h1>
 
-            <section style= {{borderTop: "2px solid #574D68", height: "15px"}}></section>
+            <Line width = "100%"/>
 
             Enter date: <input type = "date" onChange = {handleCountDate}></input>
             <p style = {{fontWeight: "bold"}}>Result: {Math.abs(countDate)} {countDate < 0 ? `${Math.abs(countDate) === 1 ? "day" : "days"} in the future` : `${Math.abs(countDate) === 1 ? "day" : "days"} ago`}</p>
 
-            <section style= {{borderTop: "2px solid #574D68", height: "15px", width: "70%", margin: "0 auto"}}></section>
+            <Line width = "70%"/>
 
             <span>Go back </span>
             <input type = "number" onChange = {handleBackDate} style = {{width: "40px"}}></input>
             <span> days</span>
             <p style = {{fontWeight: "bold"}}>Result: { (new Date(today.getTime() - convertDayToMs(backDate))).toDateString()  }</p>
             
-            <section style= {{borderTop: "2px solid #574D68", height: "15px", width: "70%", margin: "0 auto"}}></section>
-            
+            <Line width = "70%"/>
+
             <span> Last fill date: </span>
             <input type = "date" onChange = {handleLastFillDate} style = {{marginBottom: "15px"}}></input>
             <span> plus: </span>
@@ -105,8 +106,7 @@ const DayCalc = () => {
                 `next fill date is ${convertDayToMs(nextFillDate)} and last fill is ${lastFillDate} which is ${new Date(lastFillDate)} and the offset is ${(new Date()).getTimezoneOffset*60000} `
                 )} */}
 
-            <section style= {{borderTop: "2px solid #574D68", height: "15px", width: "70%", margin: "0 auto"}}></section>
-
+            <Line width = "70%"/>
 
             <span>Between two dates:</span>
             <p>
