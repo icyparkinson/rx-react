@@ -51,7 +51,7 @@ const Tots = () => {
     return(
         <section>
             <p></p>
-            <p><img src="images/imm_tots.png" width="50%"/></p>
+            <p><img src="images/imm_tots.png" alt = "Tots" width="50%"/></p>
 
         </section>
     )
@@ -61,7 +61,7 @@ const Peds = () => {
     return(
         <section>
             <p></p>
-            <p><img src="images/imm_peds.png" width="50%"/></p>
+            <p><img src="images/imm_peds.png" alt = "Peds" width="50%"/></p>
             
 
         </section>
@@ -72,7 +72,7 @@ const Adults = () => {
     return(
         <section>
             <p></p>
-            <p><img src="images/imm_adults.png" width="50%"/></p>
+            <p><img src="images/imm_adults.png" alt = "Adults" width="50%"/></p>
             
         </section>
     )
@@ -82,7 +82,7 @@ const JJ = () => {
     return(
         <section>
             <p></p>
-            <p><img src="images/imm_jj.png" width="50%"/></p>
+            <p><img src="images/imm_jj.png" alt = "J&J" width="50%"/></p>
         </section>
     )
 }
