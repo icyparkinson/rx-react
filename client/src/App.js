@@ -1,7 +1,7 @@
 import "./App.css"
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom"
-import WorkSpace from "./components/WorkSpace"
-import NavBar from "./components/NavBar"
+import WorkSpace from "./components/ui/WorkSpace"
+import NavBar from "./components/ui/NavBar"
 
 
 const App = () =>{

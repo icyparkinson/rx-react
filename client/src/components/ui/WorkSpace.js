@@ -1,10 +1,10 @@
 import React from "react"
 import { Routes, Route } from "react-router-dom"
-import Home from "./Home"
-import DayCalc from "./DayCalc"
-import Vaccine from "./Vaccine"
-import Abx from "./Abx"
-import Notes from "./Notes"
+import Home from "../pages/Home"
+import DayCalc from "../pages/daycalc/DayCalc"
+import Vaccine from "../pages/vaccines/Vaccine"
+import Abx from "../pages/abx/Abx"
+import Notes from "../pages/notes/Notes"
 
 
 const WorkSpace = () => {
