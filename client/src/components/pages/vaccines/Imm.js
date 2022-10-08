@@ -2,44 +2,37 @@ import React, { useState } from "react"
 
 const Imm = () => {
 
-    const [showTots, setShowTots] = useState(false)
-    const handleShowTots = () => {
-        setShowTots((prevState) => !prevState)
-    }
+    const [showItem, setShowItem] = useState({
+        tots: false,
+        peds: false,
+        adults: false,
+        jj: false
 
-    const [showPeds, setShowPeds] = useState(false)
-    const handleShowPeds = () => {
-        setShowPeds((prevState) => !prevState)
-    }
+    })
 
-    const [showAdults, setShowAdults] = useState(false)
-    const handleShowAdults = () => {
-        setShowAdults((prevState) => !prevState)
-    }
-
-    const [showJJ, setShowJJ] = useState(false)
-    const handleShowJJ = () => {
-        setShowJJ((prevState) => !prevState)
+    const handleShowItem = (e) => {
+        let title = e.target.getAttribute("name")
+        let status = showItem[title]
+        setShowItem({
+            ...showItem, [title]: !status
+        })
     }
 
 
     return (
         <section>
             <p></p>
-            <span onClick= {handleShowTots} style = {itemStyle}>6mo - 4yo {showTots === true ? "▾" : "▸"}</span>
-            <span onClick= {handleShowPeds} style = {itemStyle}>5yo - 11yo {showPeds === true ? "▾" : "▸"}</span>
-            <span onClick= {handleShowAdults} style = {itemStyle}>12+ {showAdults === true ? "▾" : "▸"}</span>
-            <span onClick= {handleShowJJ} style = {itemStyle}>18+ & J&J {showJJ === true ? "▾" : "▸"}</span>
+            <span onClick= {handleShowItem} name = "tots" style = {itemStyle}>6mo - 4yo {showItem.tots === true ? "▾" : "▸"}</span>
+            <span onClick= {handleShowItem} name = "peds" style = {itemStyle}>5yo - 11yo {showItem.peds === true ? "▾" : "▸"}</span>
+            <span onClick= {handleShowItem} name = "adults" style = {itemStyle}>12+ {showItem.adults === true ? "▾" : "▸"}</span>
+            <span onClick= {handleShowItem} name = "jj" style = {itemStyle}>18+ & J&J {showItem.jj === true ? "▾" : "▸"}</span>
 
 
 
-            {showTots === true ? <Tots /> : null }
-            
-            {showPeds === true ? <Peds /> : null }            
-            
-            {showAdults === true ? <Adults /> : null }            
-            
-            {showJJ === true ? <JJ /> : null }
+            {showItem.tots === true ? <Tots /> : null }
+            {showItem.peds === true ? <Peds /> : null }            
+            {showItem.adults === true ? <Adults /> : null }            
+            {showItem.jj === true ? <JJ /> : null }
         </section>
 
     )
