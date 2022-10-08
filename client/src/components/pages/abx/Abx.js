@@ -5,53 +5,38 @@ import Line from "../../ui/Line"
 
 
 const Abx = () => {
+
+    const [state, setState] = useState({
+        maxDose: "",
+        vol: "",
+        mg: "",
+        mL: "",
+        freq: "",
+        startmL: "",
+        startmg: "",
+        startVol: "",
+        endmg: "",
+        endmL: ""
+    })
+
+    const handleChange = (e) => {
+        const value = e.target.value;
+        setState({
+            ...state, [e.target.name]: value
+        });
+      }
+
     ///////////////////////////////////
     /////CALCULATING CHILD WEIGHT/////
     ///////////////////////////////////
 
-    //This pair takes care of the max dose/day input
-    const [maxDoseInput, setMaxDoseInput] = useState("")
-
-    const handleMaxDose = ( {target }) => {
-        const maxDose = target.value
-        setMaxDoseInput(Number(maxDose))
-    }
-
-    const [volInput, setVolInput] = useState("")
-
-    const handleVolume = ({ target }) => {
-        const volume = target.value
-        setVolInput(volume)
-    }
-
-    const [strInput, setStrInput] = useState("")
-
-    const handleStrength = ({ target }) => {
-        const strength = target.value
-        setStrInput(strength)
-    }
-
-    const [strInput2, setStrInput2] = useState("")
-
-    const handleStrength2 = ({ target }) => {
-        const strength2 = target.value
-        setStrInput2(strength2)
-    }
-
-    const [freqInput, setFreqInput] = useState("")
-
-    const handleFreq = ({ target }) => {
-        const freq = target.value
-        setFreqInput(freq)
-    }
-
-    const dosePrescribed = (a,b,c,d) => {
-        return volInput * (strInput / strInput2) * freqInput
+    const dosePrescribed = () => {
+        return state.vol * (state.mg / state.mL) * state.freq
     }
 
     //This does the math for calculating child weight in lbs
     const childWeight = (a,b) => {
-        return (dosePrescribed() / maxDoseInput * 2.2).toFixed(1)
+        return (dosePrescribed() / state.maxDose * 2.2).toFixed(1)
     }
     
 
@@ -59,48 +44,12 @@ const Abx = () => {
     //CALCULATING STRENGTH CONVERSION//
     ///////////////////////////////////
 
-
-    const [startmL, setStartmL] = useState("")
-
-    const handleStartmL = ({ target }) => {
-        const startingmL = target.value
-        setStartmL(startingmL)
-    }
-    
-    const [startmg, setStartmg] = useState("")
-
-    const handleStartmg = ({ target }) => {
-        const startingmg = target.value
-        setStartmg(startingmg)
+    const totalDose = () => {
+        return state.startVol * (state.startmg / state.startmL)
     }
 
-    const [startVol, setStartVol] = useState("")
-
-    const handleStartVol = ({ target }) => {
-        const startingVol = target.value
-        setStartVol(startingVol)
-    }
-
-    const totalDose = (a,b,c) => {
-        return startVol * (startmg / startmL)
-    }
-
-    const [endmg, setEndmg] = useState("")
-
-    const handleEndmg = ({ target }) => {
-        const endingmg = target.value
-        setEndmg(endingmg)
-    }
-
-    const [endmL, setEndmL] = useState("")
-
-    const handleEndmL = ({ target }) => {
-        const endingmL = target.value
-        setEndmL(endingmL)
-    }
-
-    const convertedDose = (a,b,c) => {
-        return (totalDose()) * endmL / endmg
+    const convertedDose = () => {
+        return (totalDose()) * state.endmL / state.endmg
     }
 
 
@@ -125,18 +74,19 @@ const Abx = () => {
 
             <section style = {{display: "flex", justifyContent: "center", flexDirection: "column"}}>
                 <section style={{margin: "0 20px"}}>
-                    <p>Max dose/day: <input style = {inputW} onChange = {handleMaxDose}></input>mg/kg</p>
-                    <p> Taking<input type = "number" style = {inputW} placeholder = "vol" onChange = {handleVolume}></input>mL
-                        at<input type = "number" style = {inputW}  placeholder = "mg" onChange = {handleStrength}></input> /
-                        <input type = "number" style = {inputW}  placeholder = "mL" onChange = {handleStrength2}></input>mg/mL 
-                        <input type = "number" style = {inputW} placeholder = "freq" onChange = {handleFreq}></input>times per day.
+                    <p>Max dose/day:    <input style = {inputW} name = "maxDose" value = {state.maxDose} onChange = {handleChange}></input>mg/kg</p>
+                    <p> Taking          <input type = "number" style = {inputW} name = "vol" value = {state.vol} placeholder = "vol" onChange = {handleChange}></input>     mL
+                        at              <input type = "number" style = {inputW}  name = "mg" value = {state.mg} placeholder = "mg" onChange = {handleChange}></input>       /
+                                        <input type = "number" style = {inputW}  name = "mL" value = {state.mL} placeholder = "mL" onChange = {handleChange}></input>       mg/mL 
+                                        <input type = "number" style = {inputW} name = "freq" value = {state.freq} placeholder = "freq" onChange = {handleChange}></input>  times per day.
                     </p>
                     <p>Total dose prescribed per day: {dosePrescribed()} mg</p>
                     <p style = {{fontWeight: "bold"}}>Child should weigh at least: {childWeight()} lbs</p>
-                    {/* {console.log(dosePrescribed())} */}
                 </section>
+
                 <p onClick= {handleList} style = {{textDecoration: "underline", cursor: "pointer"}}>Click to {showList === true ? "hide" : "show" } Notes</p>
                 {showList === true ? <CommonDoses /> : null }
+                
             </section>
 
             <Line width = "100%"/>
@@ -144,13 +94,13 @@ const Abx = () => {
                 <h1>Calculate Strength Conversions</h1>
             <section>
                 <p>Starting with: 
-                   <input type = "number" style = {inputW} placeholder = "mL" onChange={handleStartVol}></input>mL
-                of <input type = "number" style = {inputW} placeholder = "mg" onChange = {handleStartmg}></input>
-                 / <input type = "number" style = {inputW} placeholder = "mL" onChange = {handleStartmL}></input>mg/mL</p>
+                   <input type = "number" style = {inputW} name = "startmL" value = {state.startmL} placeholder = "mL" onChange={handleChange}></input>mL
+                of <input type = "number" style = {inputW} name = "startmg" value = {state.startmg} placeholder = "mg" onChange = {handleChange}></input>
+                 / <input type = "number" style = {inputW} name = "startVol" value = {state.startVol} placeholder = "mL" onChange = {handleChange}></input>mg/mL</p>
                 <p>(Equal to {totalDose()}mg)</p>
                 <p>Converting to: 
-                    <input type = "number" style = {inputW} placeholder="mg" onChange = {handleEndmg}></input> / 
-                    <input type = "number" style = {inputW} placeholder="mL" onChange = {handleEndmL}></input>mg/mL</p>
+                    <input type = "number" style = {inputW} name = "endmg" value = {state.endmg} placeholder="mg" onChange = {handleChange}></input> / 
+                    <input type = "number" style = {inputW} name = "endmL" value = {state.endmL} placeholder="mL" onChange = {handleChange}></input>mg/mL</p>
                 <p style = {{fontWeight: "bold"}}>Equivalent to: {convertedDose()} mL</p>
             </section>
 
