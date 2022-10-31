@@ -45,7 +45,7 @@ const Abx = () => {
     ///////////////////////////////////
 
     const totalDose = () => {
-        return state.startVol * (state.startmg / state.startmL)
+        return state.startmL * (state.startmg / state.startVol)
     }
 
     const convertedDose = () => {
