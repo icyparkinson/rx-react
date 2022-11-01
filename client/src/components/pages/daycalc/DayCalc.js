@@ -58,7 +58,6 @@ const DayCalc = () => {
         const countDate = new Date(newStrDate)
         const countTime = countDate.getTime()
         setdateOne(countTime)
-        console.log(countTime)
     }
 
     const [dateTwo, setdateTwo] = useState("")
@@ -71,7 +70,7 @@ const DayCalc = () => {
         setdateTwo(countTime)
     }
 
-    const differenceDate = (a,b) => {
+    const differenceDate = () => {
         return Math.abs((dateTwo - dateOne)/86400000)
     }
 
@@ -102,9 +101,6 @@ const DayCalc = () => {
             <input type = "number" style = {{width: "40px"}} onChange = {handleNextFillDate}></input>
             <span> days</span>
             <p style = {{fontWeight: "bold"}}>Result: {  (new Date(lastFillDate + localOffset + convertDayToMs(nextFillDate))).toDateString() }</p>
-            {/* {console.log(
-                `next fill date is ${convertDayToMs(nextFillDate)} and last fill is ${lastFillDate} which is ${new Date(lastFillDate)} and the offset is ${(new Date()).getTimezoneOffset*60000} `
-                )} */}
 
             <Line width = "70%"/>
 

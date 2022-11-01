@@ -51,7 +51,7 @@ const V1 = () => {
     return(
         <section>
             <p></p>
-            <img src="images/unpunctured.png" width="80%"/>
+            <img src="images/unpunctured.png" alt = "Unpunctured Chart" width="80%"/>
         </section>
     )
 }
@@ -60,7 +60,7 @@ const V2 = () => {
     return(
         <section>
             <p></p>
-            <img src="images/punctured.png" width="80%"/>
+            <img src="images/punctured.png" alt = "Punctured Chart" width="80%"/>
         </section>
     )
 }
@@ -68,10 +68,10 @@ const V2 = () => {
 const V3 = () => {
     return(
         <section>
-            <ul>
-                <li><a href="https://lotexpiry.cvdvaccine.com/" target="_blank">Pfizer</a></li>
-                <li><a href="https://eua.modernatx.com/covid19vaccine-eua/providers/vial-lookup" target="_blank">Moderna</a></li>
-                <li><a href="https://vaxcheck.jnj/" target="_blank">J&J</a></li>
+            <ul style = {{listStyleType: "none" }}>
+                <li><a href="https://lotexpiry.cvdvaccine.com/" target="_blank" rel="noreferrer">Pfizer</a></li>
+                <li><a href="https://eua.modernatx.com/covid19vaccine-eua/providers/vial-lookup" target="_blank" rel="noreferrer" >Moderna</a></li>
+                <li><a href="https://vaxcheck.jnj/" target="_blank" rel="noreferrer">J&J</a></li>
             </ul>
         </section>
     )

@@ -22,20 +22,20 @@ const Vaccine = () => {
 
 
     return(
-        <div>
+        <>
             <h1 onClick= {handleShowItem} name = "pneum" style = {{textDecoration: "underline", cursor: "pointer", color: "#574D68"}}>Pneumonia Guidelines</h1>
-            <p>{showItem.pneum === true ? <Pneum /> : null }</p>
+            <div className = "item">{showItem.pneum === true ? <Pneum /> : null }</div>
 
             <Line width = "100%"/>
 
             <h1 onClick= {handleShowItem} name = "cov" style = {{textDecoration: "underline", cursor: "pointer", color: "#574D68"}}>Covid-19 Guidelines</h1>
-            <p>{showItem.cov === true ? <Cov handleShowItem = {handleShowItem}/> : null }</p>
+            <div className = "item">{showItem.cov === true ? <Cov handleShowItem = {handleShowItem}/> : null }</div>
 
             <Line width = "100%"/>
 
-            <h1><a href="images/vivotifcap.pdf">Vivotif (old)</a> || <a href = "https://vivotif.com/downloads/VIVOTIF_CLING-Z.pdf" target = "_blank" style = {{color: "574D68"}}>Vivotif (new)</a></h1>            
+            <h1><a href="images/vivotifcap.pdf">Vivotif (old)</a> || <a href = "https://vivotif.com/downloads/VIVOTIF_CLING-Z.pdf" target = "_blank" rel = "noreferrer" style = {{color: "574D68"}}>Vivotif (new)</a></h1>            
             
-        </div>
+        </>
     )
 }
 
