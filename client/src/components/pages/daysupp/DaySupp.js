@@ -126,7 +126,71 @@ const DaySupp = () => {
 
             <Line width = "100%"/>
 
+            <h1>Tapering (coming soon!)</h1>
             
+            <div style={{display: "none"}}>
+            <p>Quantity:<input 
+            type = "number" 
+            style = {inputW} 
+            value = {startingQty}
+            placeholder = "qty" 
+            min = "0"
+            onChange = {handleQty}>
+            </input> tablets
+            </p>
+
+            Take <input 
+            type = "number" 
+            style = {inputW} 
+            placeholder = "qty" 
+            min = "0"
+            onChange = {handleChange}>
+            </input>
+            tablets
+            <input 
+            type = "number" 
+            style = {inputW} 
+            placeholder = "freq" 
+            min = "0"
+            onChange = {handleChange}>
+            </input>
+            times daily for 
+            <input 
+            type = "number" 
+            style = {inputW} 
+            placeholder = "days" 
+            min = "0"
+            onChange = {handleChange}>
+            </input>
+            days. Then
+            <p>
+            take 
+            <input 
+            type = "number" 
+            style = {inputW} 
+            placeholder = "qty" 
+            min = "0"
+            onChange = {handleChange}>
+            </input>
+            tablets
+            <input 
+            type = "number" 
+            style = {inputW} 
+            placeholder = "freq" 
+            min = "0"
+            onChange = {handleChange}>
+            </input>
+            times daily thereafter 
+            </p>
+
+            <p>
+            <button onClick={handleAddLine}>Add Line</button>
+            <button onClick={handleCalculateTaper}>Calculate</button>
+            </p>
+
+            <p style = {{fontWeight: "bold"}}>Day Supply: </p>
+            </div>
+
         </div>
     )
 }
