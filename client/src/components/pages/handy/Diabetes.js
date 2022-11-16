@@ -3,10 +3,6 @@ import Line from "../../ui/Line"
 
 const Diabetes = () => {
 
-    const [showIn, setShowIn] = useState(false)
-    const handleShowIn = () => {
-        setShowIn((prevState) => !prevState)
-    }
 
     const [showItem, setShowItem] = useState({
         insulinsTable: false,
