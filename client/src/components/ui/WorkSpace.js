@@ -3,6 +3,7 @@ import { Routes, Route } from "react-router-dom"
 import Home from "../pages/Home"
 import DayCalc from "../pages/daycalc/DayCalc"
 import Vaccine from "../pages/vaccines/Vaccine"
+import DaySupp from "../pages/daysupp/DaySupp"
 import Abx from "../pages/abx/Abx"
 import Notes from "../pages/notes/Notes"
 
@@ -15,6 +16,7 @@ const WorkSpace = () => {
                 <Route exact path = "/" element = {<Home/>} />
                 <Route path = "/daycalc" element = {<DayCalc/>} />
                 <Route path = "/vaccine" element = {<Vaccine />} />
+                <Route path = "/daysupp" element = {<DaySupp />} />
                 <Route path = "/abx" element = {<Abx />} />
                 <Route path = "/notes" element = {<Notes />} />
                 <Route path = "/*" element = {<Home/>} />
