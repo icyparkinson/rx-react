@@ -1,5 +1,6 @@
 import React, { useState } from "react"
 import Line from "../../ui/Line"
+import TaperLine from "./TaperLine"
 
 const DaySupp = () => {
 
@@ -35,15 +36,17 @@ const DaySupp = () => {
     }
 
     function handleCalculateTaper(){
-        let qtyLeft = startingQty
-        for (let i = 0; i < takenTabs.length; i++){
-            qtyLeft -= takenTabs[i]
-        }
-        console.log(qtyLeft)
+        // let qtyLeft = startingQty
+        // for (let i = 0; i < takenTabs.length; i++){
+        //     qtyLeft -= takenTabs[i]
+        // }
+        // console.log(qtyLeft)
+        console.log(takenTabs)
         
     }
 
-    let takenTabs = []
+    let takenTabs = 0
+    let takenTabsArr = []
 
     const handleQty = (e) => {
         const value = parseInt(e.target.value)
@@ -138,31 +141,7 @@ const DaySupp = () => {
             onChange = {handleQty}>
             </input> tablets
             </p>
-
-            Take <input 
-            type = "number" 
-            style = {inputW} 
-            placeholder = "qty" 
-            min = "0"
-            onChange = {handleChange}>
-            </input>
-            tablets
-            <input 
-            type = "number" 
-            style = {inputW} 
-            placeholder = "freq" 
-            min = "0"
-            onChange = {handleChange}>
-            </input>
-            times daily for 
-            <input 
-            type = "number" 
-            style = {inputW} 
-            placeholder = "days" 
-            min = "0"
-            onChange = {handleChange}>
-            </input>
-            days. Then
+           < TaperLine takenTabsArr={takenTabsArr}/>
             <p>
             take 
             <input 
@@ -171,7 +150,7 @@ const DaySupp = () => {
             placeholder = "qty" 
             min = "0"
             onChange = {handleChange}>
-            </input>
+            </input> 
             tablets
             <input 
             type = "number" 

@@ -78,10 +78,10 @@ const NavBar = () => {
 
             <NavLink
             className = "navbarItem"
-            to = "/notes"
+            to = "/handy"
             exact = "true"
             >
-                Notes
+                Handy
             </NavLink>
             
         </nav>
