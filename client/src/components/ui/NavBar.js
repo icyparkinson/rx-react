@@ -49,15 +49,7 @@ const NavBar = () => {
             to = "/daycalc"
             exact = "true"
             >
-                Dates
-            </NavLink>
-
-            <NavLink
-            className = "navbarItem"
-            to = "/vaccine"
-            exact = "true"
-            >
-                Vaccine
+                Date Calc
             </NavLink>
 
             <NavLink
@@ -66,6 +58,14 @@ const NavBar = () => {
             exact = "true"
             >
                 Day Supply
+            </NavLink>
+
+            <NavLink
+            className = "navbarItem"
+            to = "/vaccine"
+            exact = "true"
+            >
+                Vaccine
             </NavLink>
 
             <NavLink
