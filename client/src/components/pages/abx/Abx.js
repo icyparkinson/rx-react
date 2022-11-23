@@ -19,6 +19,8 @@ const Abx = () => {
         endmL: ""
     })
 
+    const [maxDose, setMaxDose] = useState("")
+
     const handleChange = (e) => {
         const value = e.target.value;
         setState({
@@ -36,7 +38,7 @@ const Abx = () => {
 
     //This does the math for calculating child weight in lbs
     const childWeight = (a,b) => {
-        return (dosePrescribed() / state.maxDose * 2.2).toFixed(1)
+        return (dosePrescribed() / maxDose * 2.2).toFixed(1)
     }
     
 
@@ -67,6 +69,19 @@ const Abx = () => {
         margin: "5px"
     }
 
+    const handleMaxInput = ( {target} ) => {
+        const maxInput = target.value
+        setMaxDose(maxInput)
+    }
+
+    const handleMaxDose = (e) => {
+        let line = e.target.firstChild.data
+        let dose = line.split(":")[1]
+        let num = parseInt(dose)
+        setMaxDose(num)
+
+    }
+
 
     return(
         <div>
@@ -74,7 +89,7 @@ const Abx = () => {
 
             <section style = {{display: "flex", justifyContent: "center", flexDirection: "column"}}>
                 <section style={{margin: "0 20px"}}>
-                    <p>Max dose/day:    <input style = {inputW} name = "maxDose" value = {state.maxDose} onChange = {handleChange}></input>mg/kg</p>
+                    <p>Max dose/day:    <input style = {inputW} name = "maxDose" value = {maxDose} onChange = {handleMaxInput}></input>mg/kg</p>
                     <p> Taking          <input type = "number" style = {inputW} name = "vol" value = {state.vol} placeholder = "vol" onChange = {handleChange}></input>     mL
                         at              <input type = "number" style = {inputW}  name = "mg" value = {state.mg} placeholder = "mg" onChange = {handleChange}></input>       /
                                         <input type = "number" style = {inputW}  name = "mL" value = {state.mL} placeholder = "mL" onChange = {handleChange}></input>       mg/mL 
@@ -85,7 +100,7 @@ const Abx = () => {
                 </section>
 
                 <p onClick= {handleList} style = {{textDecoration: "underline", cursor: "pointer"}}>Click to {showList === true ? "hide" : "show" } Notes</p>
-                {showList === true ? <CommonDoses /> : null }
+                {showList === true ? <CommonDoses handleMaxDose = {handleMaxDose}/> : null }
                 
             </section>
 

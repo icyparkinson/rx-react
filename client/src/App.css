@@ -7,3 +7,8 @@
 .item{
   margin-bottom: 20px;
 }
+
+.hover:hover{
+  cursor: pointer;
+  color: purple;
+}
