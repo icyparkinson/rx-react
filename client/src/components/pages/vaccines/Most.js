@@ -49,7 +49,7 @@ const Tots = () => {
     return(
         <section>
             <p></p>
-            <img src="images/most_tots.png" alt = "Tots" width="60%"/>
+            <img src="images/most_totsbiv.png" alt = "Tots" width="60%"/>
         </section>
     )
 }
@@ -58,7 +58,9 @@ const Peds = () => {
     return(
         <section>
             <p></p>
-            <img src="images/most_peds.png" alt = "Peds" width="60%"/>
+            <img src="images/most_5biv.png" alt = "Fives" width="60%"/>
+            <br></br>
+            <img src="images/most_pedsbiv.png" alt = "Peds" width="60%"/>
         </section>
     )
 }
@@ -67,7 +69,7 @@ const Adults = () => {
     return(
         <section>
             <p></p>
-            <img src="images/most_adults.png" alt = "Adults" width="60%"/>
+            <img src="images/most_adultsbiv.png" alt = "Adults" width="60%"/>
         </section>
     )
 }
@@ -76,7 +78,7 @@ const JJ = () => {
     return(
         <section>
             <p></p>
-            <img src="images/most_jj.png" alt = "J&J" width="60%"/>
+            <img src="images/most_jjbiv.png" alt = "J&J" width="60%"/>
         </section>
     )
 }

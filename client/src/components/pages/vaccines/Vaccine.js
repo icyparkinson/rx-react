@@ -28,7 +28,7 @@ const Vaccine = () => {
 
             <Line width = "100%"/>
 
-            <h1 onClick= {handleShowItem} name = "cov" style = {{textDecoration: "underline", cursor: "pointer", color: "#574D68"}}>Covid-19 Guidelines</h1>
+            <h1 onClick= {handleShowItem} name = "cov" style = {{textDecoration: "underline", cursor: "pointer", color: "#574D68"}}>Covid-19 Guidelines (last update: 12/13)</h1>
             <div className = "item">{showItem.cov === true ? <Cov handleShowItem = {handleShowItem}/> : null }</div>
 
             <Line width = "100%"/>
