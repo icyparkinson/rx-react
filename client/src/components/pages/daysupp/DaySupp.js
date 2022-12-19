@@ -8,11 +8,8 @@ const DaySupp = () => {
 
     return(
         <div style = {{marginBottom: "20px"}}>
-            
             <Injectables />
-
             <Line width = "100%"/>
-
             <TaperBuilder />
         </div>
     )

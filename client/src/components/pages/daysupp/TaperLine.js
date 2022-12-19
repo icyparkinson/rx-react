@@ -23,13 +23,6 @@ const TaperLine = ({addToSig}) => {
         freq2: ""
     })
 
-
-    // function calculateTabsTaken(){
-    //     let answer = state.dose * state.freq * state.days
-    //     setTabs(answer)
-    //     takenTabsArr.push(answer)
-    // }
-
     const handleChange = (e) => {
         const value = e.target.value;
         setState({

@@ -1,9 +1,9 @@
-import React, { useState} from "react"
+import React, { useState } from "react"
 import styled from "styled-components"
 import TaperLine from "./TaperLine"
 import EndTaperLine from "./EndTaperLine"
 
-const SigBox = styled.div`
+    const SigBox = styled.div`
     background-color: lightgray;
     margin: auto;
     width: 500px;
@@ -76,7 +76,6 @@ function TaperBuilder(){
       
         }
     
-    
         function resetSig(){
             setSigList(() => {
                 return []
@@ -135,7 +134,7 @@ function TaperBuilder(){
         const [currentCount, setCurrentCount] = useState(startingQty)
     
     
-        //DISPLAY SETTINGS
+        //DISPLAY STATES
     
         const [displayTaperLine, setDisplayTaperLine] = useState(true)
         const [displayLastLine, setDisplayLastLine] = useState(true)
