@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from "react"
+import React, { useState } from "react"
 
-const TaperLine = ({takenTabsArr}) => {
+const TaperLine = () => {
 
     const [state, setState] = useState({
         dose: "",
@@ -10,22 +10,18 @@ const TaperLine = ({takenTabsArr}) => {
 
     const [tabs, setTabs] = useState(0)
 
-    useEffect(() => {
-        calculateTabsTaken()
-    })
 
-    function calculateTabsTaken(){
-        let answer = state.dose * state.freq * state.days
-        setTabs(answer)
-        takenTabsArr.push(answer)
-    }
+    // function calculateTabsTaken(){
+    //     let answer = state.dose * state.freq * state.days
+    //     setTabs(answer)
+    //     takenTabsArr.push(answer)
+    // }
 
     const handleChange = (e) => {
         const value = e.target.value;
         setState({
             ...state, [e.target.name]: value
         });
-        calculateTabsTaken()
       }
 
       const inputW = {
@@ -36,7 +32,7 @@ const TaperLine = ({takenTabsArr}) => {
 
     return(
         <div>
-            Take <input 
+            take <input 
                 type = "number" 
                 style = {inputW} 
                 name = "dose"
@@ -65,7 +61,7 @@ const TaperLine = ({takenTabsArr}) => {
                 min = "0"
                 onChange = {handleChange}>
             </input>
-            days. Then
+            days... then
         </div>
     )
 }

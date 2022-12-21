@@ -1,6 +1,7 @@
 import React, { useState } from "react"
 import Line from "../../ui/Line"
 import TaperLine from "./TaperLine"
+import EndTaperLine from "./EndTaperLine"
 
 const DaySupp = () => {
 
@@ -30,18 +31,68 @@ const DaySupp = () => {
         return state.mg / state.mL * state.totalVolume / state.dose / state.freq * 7
     }
 
+    const [taperArray, setTaperArray] = useState(
+        [<TaperLine handleAddLine={handleAddLine}/>, 
+        <EndTaperLine />]
+    )
 
+
+    
+    const [tabsArray, setTabsArray] = useState([
+        {
+            qty: 6,
+            freq: 2,
+            days: 3
+        },
+        {
+            qty: 5,
+            freq: 2,
+            days: 3
+        }
+    ])
+    
     function handleAddLine(){
-        console.log("Add a line")
-    }
+        setTabsArray((prevArray) => {
+            return [
+                ...prevArray,
+                {
+                    qty: 4,
+                    freq: 2,
+                    days: 3
+                }
+            ]
+        },
+        )
 
+
+        setTaperArray((prevTaperArray) => {
+            let newTaperArray = []
+
+            for (let i = 0; i < prevTaperArray.length; i++){
+                if (i === prevTaperArray.length -2){
+                    newTaperArray.push(prevTaperArray[i])
+                    newTaperArray.push(<TaperLine handleAddLine={handleAddLine}/>)
+                }else{
+                    newTaperArray.push(prevTaperArray[i])
+                }
+            }
+            return newTaperArray
+        })
+
+    }
+    
+    
     function handleCalculateTaper(){
-        // let qtyLeft = startingQty
-        // for (let i = 0; i < takenTabs.length; i++){
-        //     qtyLeft -= takenTabs[i]
-        // }
-        // console.log(qtyLeft)
-        console.log(takenTabs)
+        let qtyLeft = startingQty
+        
+        for (let i = 0; i < tabsArray.length; i++){
+            let sig = tabsArray[i]
+            let qtyThatDay = sig.qty * sig.freq * sig.days
+            qtyLeft -= qtyThatDay
+        }
+
+        console.log(qtyLeft)
+        console.log(tabsArray)
         
     }
 
@@ -129,9 +180,17 @@ const DaySupp = () => {
 
             <Line width = "100%"/>
 
+
+
+
+
+
+
+
             <h1>Tapering (coming soon!)</h1>
             
-            <div style={{display: "none"}}>
+            {/* <div style={{display: "none"}}> */}
+            <div>
             <p>Quantity:<input 
             type = "number" 
             style = {inputW} 
@@ -141,25 +200,9 @@ const DaySupp = () => {
             onChange = {handleQty}>
             </input> tablets
             </p>
-           < TaperLine takenTabsArr={takenTabsArr}/>
+
             <p>
-            take 
-            <input 
-            type = "number" 
-            style = {inputW} 
-            placeholder = "qty" 
-            min = "0"
-            onChange = {handleChange}>
-            </input> 
-            tablets
-            <input 
-            type = "number" 
-            style = {inputW} 
-            placeholder = "freq" 
-            min = "0"
-            onChange = {handleChange}>
-            </input>
-            times daily thereafter 
+                {taperArray}
             </p>
 
             <p>
