@@ -100,7 +100,7 @@ const Abx = () => {
                 </section>
 
                 <p onClick= {handleList} style = {{textDecoration: "underline", cursor: "pointer"}}>Click to {showList === true ? "hide" : "show" } Notes</p>
-                {showList === true ? <CommonDoses handleMaxDose = {handleMaxDose}/> : null }
+                {showList && <CommonDoses handleMaxDose = {handleMaxDose}/>}
                 
             </section>
 

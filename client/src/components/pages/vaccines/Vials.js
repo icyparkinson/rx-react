@@ -27,11 +27,11 @@ const Vials = () => {
 
 
 
-            {showV1 === true ? <V1 /> : null }
+            {showV1 && <V1 />}
             
-            {showV2 === true ? <V2 /> : null }            
+            {showV2 && <V2 />}            
             
-            {showV3 === true ? <V3 /> : null }            
+            {showV3 && <V3 />}            
             
         </section>
 

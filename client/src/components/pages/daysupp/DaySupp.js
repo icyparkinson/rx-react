@@ -268,18 +268,18 @@ const DaySupp = () => {
             <div>
                 <p>Current sig:</p>
                 {displaySigList}
-                {displayTaperLine ? <div><TaperLine addToSig={addToSig}/></div> : null}
-                {displayLastLine ? <div><EndTaperLine addLastLine={addLastLine}/></div> : null}
+                {displayTaperLine && <div><TaperLine addToSig={addToSig}/></div>}
+                {displayLastLine && <div><EndTaperLine addLastLine={addLastLine}/></div>}
             </div>
 
             <p>
             {/* <button onClick={handleAddLine}>Add Line</button> */}
-            {displayCalculate ? <CalculateButton onClick={handleCalculateTaper}>Calculate</CalculateButton> : null}
+            {displayCalculate && <CalculateButton onClick={handleCalculateTaper}>Calculate</CalculateButton>}
             <ResetButton onClick={resetSig}>Reset</ResetButton>
             </p>
 
-            {displayTaperAnswer ? <p style = {{fontWeight: "bold"}}>{currentCount >= 0 ? `${currentCount} tablets left` : `Need ${currentCount *-1} tablets`}</p> : null}
-            {displayTaperAnswer ? <p style = {{fontWeight: "bold"}}>Day Supply: {dayCount}</p> : null}
+            {displayTaperAnswer && <p style = {{fontWeight: "bold"}}>{currentCount >= 0 ? `${currentCount} tablets left` : `Need ${currentCount *-1} tablets`}</p>}
+            {displayTaperAnswer && <p style = {{fontWeight: "bold"}}>Day Supply: {dayCount}</p>}
 
             </div>
         </div>

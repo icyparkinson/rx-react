@@ -28,10 +28,10 @@ const Diabetes = () => {
         <span onClick= {handleShowItem} name = "stripsOnly" style = {itemStyle}>Strips {showItem.stripsOnly === true ? "▾" : "▸"}</span>
         <span style = {itemStyle}><a href="images/diabetes/blood-glucose-meter-compatibility-with-lancets.pdf" target="_blank">Compatibility PDF</a></span>
 
-        {showItem.insulinsTable === true ? <Insulin /> : null } 
-        {showItem.detailed === true ? <Detailed /> : null } 
-        {showItem.lancetsOnly === true ? <LancetsOnly /> : null } 
-        {showItem.stripsOnly === true ? <StripsOnly /> : null } 
+        {showItem.insulinsTable && <Insulin />} 
+        {showItem.detailed && <Detailed />} 
+        {showItem.lancetsOnly && <LancetsOnly />} 
+        {showItem.stripsOnly && <StripsOnly />} 
 
 
         </>
