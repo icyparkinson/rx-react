@@ -1,8 +1,9 @@
-import React, { useState, useEffect } from "react"
+import React, { useState} from "react"
 import styled from "styled-components"
 import Line from "../../ui/Line"
 import TaperLine from "./TaperLine"
 import EndTaperLine from "./EndTaperLine"
+import Injectables from "./Injectables"
 
 const SigBox = styled.div`
 background-color: lightgray;
@@ -38,12 +39,6 @@ border-radius: 15px;
 const DaySupp = () => {
 
      const [state, setState] = useState({
-        vol: "",
-        mg: "",
-        mL: "",
-        freq: "",
-        dose: "",
-        daySupp: 0,
         totalVolume: "",
         tabDays: "",
         tabFreq: "",
@@ -63,9 +58,7 @@ const DaySupp = () => {
         });
       }
 
-    const daySupply = () => {
-        return state.mg / state.mL * state.totalVolume / state.dose / state.freq * 7
-    }
+  
 
 //TAPER SECTION HERE
   
@@ -182,64 +175,8 @@ const DaySupp = () => {
     
     return(
         <div style = {{marginBottom: "20px"}}>
-            <h1>Injectables</h1>
-            <p>(Use for Ozempic, Victoza, etc.)</p>
-            <p>Strength: <input 
-                    type = "number" 
-                    style = {inputW}  
-                    name = "mg" 
-                    value = {state.mg} 
-                    placeholder = "mg" 
-                    min = "0"
-                    onChange = {handleChange}>
-                    </input>
-                /
-                    <input 
-                    type = "number" 
-                    style = {inputW}  
-                    name = "mL" 
-                    value = {state.mL} 
-                    placeholder = "mL" 
-                    min = "0"
-                    onChange = {handleChange}>
-                    </input>       
-                mg/mL
-            </p>
-            <p>
-                Quantity: <input
-                 type = "number" 
-                 style = {inputW}  
-                 name = "totalVolume" 
-                 value = {state.totalVolume} 
-                 placeholder = "mL" 
-                 min = "0"
-                 onChange = {handleChange}>
-                </input>
-                mL
-            </p>
-
-            <p> Taking <input 
-                    type = "number" 
-                    style = {inputW} 
-                    name = "dose" 
-                    value = {state.dose} 
-                    placeholder = "mg" 
-                    min = "0"
-                    onChange = {handleChange}>
-                </input>
-                mg
-                    <input 
-                    type = "number" 
-                    style = {inputW} 
-                    name = "freq" 
-                    value = {state.freq} 
-                    placeholder = "freq" 
-                    min = "0"
-                    onChange = {handleChange}>
-                    </input>  
-                times per week.
-                    </p>
-                    <p style = {{fontWeight: "bold"}}>Day Supply: {daySupply()}</p>
+            
+            <Injectables />
 
             <Line width = "100%"/>
 

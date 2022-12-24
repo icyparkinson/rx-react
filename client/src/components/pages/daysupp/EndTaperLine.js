@@ -13,7 +13,7 @@ border-radius: 15px;
 }
 `
 
-function EndTaperLine({addLastLine, hideTaperLine, hideLastLine}){
+function EndTaperLine({addLastLine}){
 
     const [state, setState] = useState({
         dose2: "",
