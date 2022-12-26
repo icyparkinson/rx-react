@@ -16,7 +16,7 @@ const Pneum = () => {
     return (
         <section>
             <span onClick= {handleShowPn} style = {itemStyle}>Algorithm {showPn === true ? "▾" : "▸"}</span>
-            <span style = {itemStyle}><a href="https://www.cdc.gov/vaccines/vpd/pneumo/downloads/pneumo-vaccine-timing.pdf" target="_blank">Timeline Link</a></span>
+            <span style = {itemStyle}><a href="https://www.cdc.gov/vaccines/vpd/pneumo/downloads/pneumo-vaccine-timing.pdf" target="_blank" rel="noreferrer">Timeline Link</a></span>
             <span onClick= {handleShowUp} style = {itemStyle}>1/27/22 Update {showUp === true ? "▾" : "▸"}</span>
                    
             
@@ -40,7 +40,7 @@ const Pn = () => {
     return(
         <section>
             <p></p>
-            <img src="images/pneumonia.png" width="80%"/>
+            <img src="images/pneumonia.png" width="80%" alt="pneumonia"/>
         </section>
     )
 }
@@ -49,7 +49,7 @@ const Up = () => {
     return(
         <section>
             <p></p>
-            <img src="images/pneum_update.png" width = "80%"></img>
+            <img src="images/pneum_update.png" width = "80%" alt="pneumonia update"></img>
         </section>
     )
 }
