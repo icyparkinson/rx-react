@@ -24,12 +24,12 @@ const Vaccine = () => {
     return(
         <>
             <h1 onClick= {handleShowItem} name = "pneum" style = {{textDecoration: "underline", cursor: "pointer", color: "#574D68"}}>Pneumonia Guidelines</h1>
-            <div className = "item">{showItem.pneum === true ? <Pneum /> : null }</div>
+            <div className = "item">{showItem.pneum && <Pneum />}</div>
 
             <Line width = "100%"/>
 
             <h1 onClick= {handleShowItem} name = "cov" style = {{textDecoration: "underline", cursor: "pointer", color: "#574D68"}}>Covid-19 Guidelines (last update: 12/13)</h1>
-            <div className = "item">{showItem.cov === true ? <Cov handleShowItem = {handleShowItem}/> : null }</div>
+            <div className = "item">{showItem.cov && <Cov handleShowItem = {handleShowItem}/>}</div>
 
             <Line width = "100%"/>
 

@@ -20,8 +20,8 @@ const Pneum = () => {
             <span onClick= {handleShowUp} style = {itemStyle}>1/27/22 Update {showUp === true ? "▾" : "▸"}</span>
                    
             
-            {showPn === true ? <Pn /> : null } 
-            {showUp === true ? <Up /> : null }              
+            {showPn && <Pn />} 
+            {showUp && <Up />}              
             
         </section>
 

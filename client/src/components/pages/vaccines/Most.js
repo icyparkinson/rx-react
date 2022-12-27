@@ -27,10 +27,10 @@ const Most = () => {
             <span onClick= {handleShowItem} name = "adults" style = {itemStyle}>12+ {showItem.adults === true ? "▾" : "▸"}</span>
             <span onClick= {handleShowItem} name = "jj" style = {itemStyle}>18+ & J&J {showItem.jj === true ? "▾" : "▸"}</span>
 
-            {showItem.tots === true ? <Tots /> : null }
-            {showItem.peds === true ? <Peds /> : null }            
-            {showItem.adults === true ? <Adults /> : null }            
-            {showItem.jj === true ? <JJ /> : null }
+            {showItem.tots && <Tots />}
+            {showItem.peds && <Peds />}            
+            {showItem.adults && <Adults />}            
+            {showItem.jj && <JJ />}
         </section>
 
     )
