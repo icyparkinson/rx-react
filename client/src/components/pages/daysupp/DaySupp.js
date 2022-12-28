@@ -2,12 +2,37 @@ import React, { useState, useEffect } from "react"
 import styled from "styled-components"
 import Line from "../../ui/Line"
 import TaperLine from "./TaperLine"
+import EndTaperLine from "./EndTaperLine"
 
 const SigBox = styled.div`
 background-color: lightgray;
 margin: auto;
 width: 500px;
 padding: 3px;
+`
+
+const CalculateButton = styled.button`
+padding: 2px 8px;
+margin: 0 5px;
+background-color: #4B0082;
+color: white;
+border-radius: 15px;
+:hover{
+    background-color: #9370DB;
+    cursor: pointer;
+}
+`
+
+const ResetButton = styled.button`
+padding: 2px 8px;
+margin: 0 5px;
+background-color: black;
+color: white;
+border-radius: 15px;
+:hover{
+    background-color: darkred;
+    cursor: pointer;
+}
 `
 
 const DaySupp = () => {
@@ -42,51 +67,15 @@ const DaySupp = () => {
         return state.mg / state.mL * state.totalVolume / state.dose / state.freq * 7
     }
 
-
-
-
-    ///TAPER STUFF STARTS HERE
-
-    // const [taperArray, setTaperArray] = useState(
-    //     [<TaperLine addToTabsArray={addToTabsArray}/>, 
-    //     <EndTaperLine />]
-    // )
-
-    // function handleAddLine(){
-
-    //     setTaperArray((prevTaperArray) => {
-    //         let newTaperArray = []
-
-    //         for (let i = 0; i < prevTaperArray.length; i++){
-    //             if (i === prevTaperArray.length -2){
-    //                 newTaperArray.push(prevTaperArray[i])
-    //                 newTaperArray.push(<TaperLine addToTabsArray={addToTabsArray}/>)
-    //             }else{
-    //                 newTaperArray.push(prevTaperArray[i])
-    //             }
-    //         }
-    //         return newTaperArray
-    //     })
-
-    // }
-    
-
-
-    // const displayTaper = taperArray.map((taper, index) => {
-    //     return(
-    //         <div key={index*Math.random()}>{taper}</div>
-    //     )
-    // })
-
-
+//TAPER SECTION HERE
   
 
-    const [sigList, setSigList] = useState([[1, 2, 3], [2, 2, 2]])
+    const [sigList, setSigList] = useState([[2, 2, 3], [1, 2, 2], [1, 1]])
 
     const displaySigList = sigList.map((sigLine, index) => {
         return(
             <SigBox key={index*Math.random()}>
-                {index > 0 ? "Then take" : "Take" } {sigLine[0]} tablets {sigLine[1]} times daily {sigLine.length === 3 ? `for ${sigLine[2]} days` : "thereafter"}.
+                {index > 0 ? "Then take" : "Take" } {sigLine[0]} tablet{sigLine[0] > 1 ? "s" : null} {sigLine[1]} time{sigLine[1] > 1 ? "s" : null} daily {sigLine.length === 3 ? `for ${sigLine[2]} day${sigLine[2] > 1 ? "s" : ""}` : "thereafter"}.
             </SigBox>
         )
         
@@ -110,6 +99,8 @@ const DaySupp = () => {
                 ]
             })
         }
+        setDisplayLastLine(false)
+        setDisplayTaperLine(false)
   
     }
 
@@ -119,61 +110,65 @@ const DaySupp = () => {
             return []
         })
         setCurrentCount(startingQty)
+        setDayCount(0)
+
+        setDisplayLastLine(true)
+        setDisplayTaperLine(true)
+        setDisplayCalculate(true)
+        setDisplayTaperAnswer(false)
     }
 
     const [dayCount, setDayCount] = useState(0)
 
     function handleCalculateTaper(){
-        let finalCount = 0
-        let finalDay = 0
-
-        for (let i = 0; i < sigList.length; i++){
-            let line = sigList[i]
-
-            
-
-            if (line.length === 3){
-                let tabsInADay = line[0] * line[1] * line[2]
-                finalCount += tabsInADay
-                finalDay += line[2]
-            }
-            
-
-            if (line.length === 3){
-                setCurrentCount(startingQty - finalCount)
-                setDayCount(finalDay)
-            }else{
-                let current = (startingQty - finalCount)
-                let lastSigTabs = line[0] * line[1]
-                let ultimateDay = finalDay + (current / lastSigTabs)
-                setDayCount(ultimateDay)
-                setCurrentCount(0)
-            }
-            
+        if (sigList.length > 0){
+            let finalCount = 0
+            let finalDay = 0
+    
+            for (let i = 0; i < sigList.length; i++){
+                let line = sigList[i]
+    
+                
+    
+                if (line.length === 3){
+                    let tabsInADay = line[0] * line[1] * line[2]
+                    finalCount += tabsInADay
+                    finalDay += line[2]
+                    setCurrentCount(startingQty - finalCount)
+                    setDayCount(finalDay)
+                    
+                }else{
+                    let current = (startingQty - finalCount)
+                    let lastSigTabs = line[0] * line[1]
+                    let ultimateDay = finalDay + (current / lastSigTabs)
+    
+                    if (current <= 0){
+                        setDayCount("Error, not enough tablets")
+                    }else{
+                        setDayCount(ultimateDay)
+                        setCurrentCount(0)
+                    }
+                    
+                }   
+            }   
+    
+            setDisplayLastLine(false)
+            setDisplayTaperLine(false)
+            setDisplayTaperAnswer(true)
         }
-        
-        
         
     }
     
 
     const [currentCount, setCurrentCount] = useState(startingQty)
 
-    
 
-    // let takenTabs = 0
-    
+    //DISPLAY SETTINGS
 
-    // const handleQty = (e) => {
-    //     const value = parseInt(e.target.value)
-    //     setStartingQty(value)
-    //     setTabletsLeft(value)    
-    // }
-
-    // const [tabletsLeft, setTabletsLeft] = useState(startingQty)
-
-
-
+    const [displayTaperLine, setDisplayTaperLine] = useState(true)
+    const [displayLastLine, setDisplayLastLine] = useState(true)
+    const [displayCalculate, setDisplayCalculate] = useState(true)
+    const [displayTaperAnswer, setDisplayTaperAnswer] = useState(false)
 
 
     const inputW = {
@@ -273,20 +268,20 @@ const DaySupp = () => {
             <div>
                 <p>Current sig:</p>
                 {displaySigList}
-                <div><TaperLine addToSig = {addToSig} addLastLine={addLastLine}/></div>
+                {displayTaperLine ? <div><TaperLine addToSig={addToSig}/></div> : null}
+                {displayLastLine ? <div><EndTaperLine addLastLine={addLastLine}/></div> : null}
             </div>
 
             <p>
             {/* <button onClick={handleAddLine}>Add Line</button> */}
-            <button onClick={handleCalculateTaper}>Calculate</button>
-            <button onClick={resetSig}>Reset</button>
+            {displayCalculate ? <CalculateButton onClick={handleCalculateTaper}>Calculate</CalculateButton> : null}
+            <ResetButton onClick={resetSig}>Reset</ResetButton>
             </p>
 
-            <p style = {{fontWeight: "bold"}}>{currentCount} tablets left</p>
+            {displayTaperAnswer ? <p style = {{fontWeight: "bold"}}>{currentCount >= 0 ? `${currentCount} tablets left` : `Need ${currentCount *-1} tablets`}</p> : null}
+            {displayTaperAnswer ? <p style = {{fontWeight: "bold"}}>Day Supply: {dayCount}</p> : null}
 
-            <p style = {{fontWeight: "bold"}}>Day Supply: {dayCount}</p>
             </div>
-
         </div>
     )
 }

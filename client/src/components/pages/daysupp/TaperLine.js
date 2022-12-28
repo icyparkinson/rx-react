@@ -7,9 +7,13 @@ padding: 2px 8px;
 background-color: darkgreen;
 color: white;
 border-radius: 15px;
+:hover{
+    background-color: green;
+    cursor: pointer;
+}
 `
 
-const TaperLine = ({addToSig, addLastLine}) => {
+const TaperLine = ({addToSig}) => {
 
     const [state, setState] = useState({
         dose: "",
@@ -33,15 +37,17 @@ const TaperLine = ({addToSig, addLastLine}) => {
         });
       }
 
+
       const inputW = {
         width: "50px",
         margin: "5px",
         paddingLeft: "2px"
     }
 
+
     return(
         <div>
-            <p>
+            <p></p>
             Take <input 
                 type = "number" 
                 style = {inputW} 
@@ -73,30 +79,6 @@ const TaperLine = ({addToSig, addLastLine}) => {
             </input>
             days
             <AddButton onClick={() => addToSig(state.dose, state.freq, state.days)}> ← Add line</AddButton>
-            </p>
-            <p>
-            Then take <input 
-                type = "number" 
-                style = {inputW} 
-                name = "dose2"
-                value = {state.dose2}
-                placeholder = "qty" 
-                min = "0"
-                onChange = {handleChange}>
-            </input>
-            tablets
-            <input 
-                type = "number" 
-                style = {inputW} 
-                name = "freq2"
-                value = {state.freq2}
-                placeholder = "freq" 
-                min = "0"
-                onChange = {handleChange}>
-            </input>
-            times daily thereafter
-            <AddButton onClick={() => addLastLine(state.dose2, state.freq2)}> ← Add last line</AddButton>
-            </p>
         </div>
     )
 }
