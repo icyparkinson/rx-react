@@ -70,7 +70,7 @@ const DaySupp = () => {
 //TAPER SECTION HERE
   
 
-    const [sigList, setSigList] = useState([[2, 2, 3], [1, 2, 2], [1, 1]])
+    const [sigList, setSigList] = useState([])
 
     const displaySigList = sigList.map((sigLine, index) => {
         return(
