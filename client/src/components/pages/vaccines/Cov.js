@@ -26,10 +26,9 @@ const Cov = () => {
             <span onClick= {handleShowItem} name = "imm" style = {immStyle}>Immunocompromised {showItem.imm === true ? "▾" : "▸"}</span>
             <span onClick= {handleShowItem} name = "vials" style = {vialStyle}>Vials {showItem.vials === true ? "▾" : "▸"}</span>
 
-
-            {showItem.most === true ? <Most /> : null }
-            {showItem.imm === true ? <Imm /> : null }
-            {showItem.vials === true ? <Vials /> : null }
+            {showItem.most && <Most />}
+            {showItem.imm && <Imm />}
+            {showItem.vials && <Vials />}
             
         </section>
     )
