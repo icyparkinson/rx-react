@@ -75,7 +75,7 @@ const DaySupp = () => {
     const displaySigList = sigList.map((sigLine, index) => {
         return(
             <SigBox key={index*Math.random()}>
-                {index > 0 ? "Then take" : "Take" } {sigLine[0]} tablet{sigLine[0] > 1 ? "s" : null} {sigLine[1]} time{sigLine[1] > 1 ? "s" : null} daily {sigLine.length === 3 ? `for ${sigLine[2]} day${sigLine[2] > 1 ? "s" : ""}` : "thereafter"}.
+                {index > 0 ? "Then take" : "Take" } {sigLine[0]} tablet{sigLine[0] > 1 ? "s" : null} {index === 0 && "by mouth"} {sigLine[1]} time{sigLine[1] > 1 ? "s" : null} daily {sigLine.length === 3 ? `for ${sigLine[2]} day${sigLine[2] > 1 ? "s" : ""}` : "thereafter"}.
             </SigBox>
         )
         
