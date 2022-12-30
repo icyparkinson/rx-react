@@ -98,9 +98,9 @@ const DaySupp = () => {
                 [parseFloat(qty), parseFloat(freq)]
                 ]
             })
+            setDisplayLastLine(false)
+            setDisplayTaperLine(false)
         }
-        setDisplayLastLine(false)
-        setDisplayTaperLine(false)
   
     }
 
