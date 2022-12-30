@@ -4,6 +4,11 @@ import styled from "styled-components"
 
 const StyledLink = styled.ul`
 
+    nav{
+        text-align: center;
+        padding-top: 30px;
+    }
+
     a.navbarItem.active{
         color: white;
     }
@@ -17,9 +22,9 @@ const StyledLink = styled.ul`
         &:hover{
             color: #EEE5E9;
             border-bottom: 2px solid #EEE5E9;
-            }
         }
     }
+    
 
     @media (max-width: 550px){
         .navbarItem{
@@ -27,14 +32,14 @@ const StyledLink = styled.ul`
         }
     }
 
-    `;
+    `
 
 const NavBar = () => {
 
 
     return(
         <StyledLink>
-        <nav style = {{textAlign: "center", paddingTop: "30px"}}>
+        <nav>
             
             <NavLink
             className = "navbarItem"
