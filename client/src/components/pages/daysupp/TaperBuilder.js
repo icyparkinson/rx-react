@@ -36,7 +36,7 @@ import EndTaperLine from "./EndTaperLine"
 
 function TaperBuilder(){
 
-        const [drugForm, setDrugForm] = useState("target")
+        const [drugForm, setDrugForm] = useState("tablet")
         const[startingQty, setStartingQty] = useState(0)
     
         function handleStartingQty(e){
