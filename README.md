@@ -18,6 +18,7 @@
     <li>How to incorporate favicon</li>
     <li>How to fix page refresh problem</li>
     <li>How to connect backend server with React, making this a fullstack MERN project</li>
+    <li>How to use different form types within React</li>
    </ul>
 
 <h2>Future Update Plans:</h2>
