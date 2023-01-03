@@ -88,6 +88,14 @@ const NavBar = () => {
             >
                 Handy
             </NavLink>
+
+            <NavLink
+            className = "navbarItem"
+            to = "/contact"
+            exact = "true"
+            >
+                Contact
+            </NavLink>
             
         </nav>
         </StyledLink>

@@ -6,6 +6,7 @@ import Vaccine from "../pages/vaccines/Vaccine"
 import DaySupp from "../pages/daysupp/DaySupp"
 import Abx from "../pages/abx/Abx"
 import Handy from "../pages/handy/Handy"
+import Contact from "../pages/contact/Contact"
 import Notes from "../pages/notes/Notes"
 
 
@@ -20,6 +21,7 @@ const WorkSpace = () => {
                 <Route path = "/daysupp" element = {<DaySupp />} />
                 <Route path = "/abx" element = {<Abx />} />
                 <Route path = "/handy" element = {<Handy />} />
+                <Route path = "/contact" element = {<Contact />} />
                 {/* <Route path = "/notes" element = {<Notes />} /> */}
                 <Route path = "/*" element = {<Home/>} />
                 </Routes> 
