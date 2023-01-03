@@ -32,7 +32,7 @@ function Contact(){
             <h1>Contact Icy</h1>
                         <p class="reach">If you have any comments, questions, or suggestions for improvements, please let me know!</p>
     
-                        <Form target="_blank" name="contact" method="POST" data-netlify="true">
+                        <Form target="_blank" name="rxbuddy" method="POST" data-netlify="true">
                             <div>
                             <label for="name">Name</label>
                                 <input type="text" name="name" class="form-control" placeholder="Your Name" required />
