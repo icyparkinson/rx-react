@@ -13,7 +13,7 @@ border-radius: 15px;
 }
 `
 
-const TaperLine = ({addToSig}) => {
+const TaperLine = ({addToSig, drugForm}) => {
 
     const [state, setState] = useState({
         dose: "",
@@ -50,7 +50,7 @@ const TaperLine = ({addToSig}) => {
                 min = "0"
                 onChange = {handleChange}>
             </input>
-            tablets
+            {drugForm}s
             <input 
                 type = "number" 
                 style = {inputW} 

@@ -13,7 +13,7 @@ border-radius: 15px;
 }
 `
 
-function EndTaperLine({addLastLine}){
+function EndTaperLine({addLastLine, drugForm}){
 
     const [state, setState] = useState({
         dose2: "",
@@ -44,7 +44,7 @@ function EndTaperLine({addLastLine}){
             min = "0"
             onChange = {handleChange}>
         </input>
-        tablets
+        {drugForm}s
         <input 
             type = "number" 
             style = {inputW} 
