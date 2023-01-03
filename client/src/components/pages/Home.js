@@ -16,7 +16,7 @@ const Home = () => {
         <TopSection>
             <Title>Rx Buddy</Title>
             <img src = "images/logoblack.png" alt = "Rx Buddy logo"/>
-            <h2 style = {{fontSize: "2rem"}}>Yay!!</h2>
+            <h2 style = {{fontSize: "2rem"}}>Yay!</h2>
             <p style = {{margin: "20px"}}>Hi there~ I hope I can help you today. To start, select from one of the options above!</p>
             <em>**Use me at your discretion! Rx Buddy takes no responsibility or liability.**</em>
         </TopSection>
