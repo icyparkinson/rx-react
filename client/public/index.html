@@ -15,7 +15,41 @@
   </head>
   <body style="background-color: #1f7a8c">
     <noscript>You need to enable JavaScript to run this app.</noscript>
+
+
+    <form name="rxbuddyContact" netlify netlify-honeypot="bot-field" hidden>
+      <div>
+          <input type="text" name="name" placeholder="Your Name" required />
+          <input type="email" name="email" placeholder="Email Address" required />
+      </div>
+          <textarea placeholder="Your Message" name="message" rows="5" required></textarea>
+  </form>
+
+
     <div id="root"></div>
+
+    <script type="text/babel">
+
+      ReactDOM.render(
+        <form name="rxbuddyContact" method="post">
+          <input type="hidden" name="rxBuddy-contact" value="rxbuddyContact" />
+          <p>
+            <label>Your Name: <input type="text" name="name"/></label>
+          </p>
+          <p>
+            <label>Your Email: <input type="email" name="email"/></label>
+          </p>
+          <p>
+            <label>Message: <textarea name="message"></textarea></label>
+          </p>
+          <p>
+            <button type="submit">Send</button>
+          </p>
+        </form>,
+        document.getElementById("root")
+      );
+
+    </script>
 
   </body>
 </html>
