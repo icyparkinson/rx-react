@@ -195,7 +195,7 @@ function TaperBuilder(){
             <ResetButton onClick={resetSig}>Reset</ResetButton>
             </p>
 
-            {displayTaperAnswer && <p style = {{fontWeight: "bold"}}>{currentCount >= 0 ? `${currentCount} ${drugForm} left` : `Need ${currentCount *-1} ${drugForm}`}</p>}
+            {displayTaperAnswer && <p style = {{fontWeight: "bold"}}>{currentCount >= 0 ? `${currentCount} ${drugForm}${currentCount === 1 ? "" : "s"} left` : `Need ${currentCount *-1} ${drugForm}${currentCount === -1 ? "" : "s"}`}</p>}
             {displayTaperAnswer && <p style = {{fontWeight: "bold"}}>Day Supply: {dayCount}</p>}
 
             </div>
