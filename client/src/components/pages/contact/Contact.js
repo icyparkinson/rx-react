@@ -37,11 +37,11 @@ function Contact(){
                         <input type="hidden" name="form-name" value="rxcontact" />
                             <div>
                             <label for="name">Name</label>
-                                <input type="text" name="name" class="form-control" placeholder="Your Name" required />
+                                <input type="text" name="name" id="name" placeholder="Your Name" required />
                             <label for="email">Email</label>
-                                <input type="email" name="email" class="form-control" placeholder="Email Address" required />
+                                <input type="email" name="email" id="email" placeholder="Email Address" required />
                             </div>
-                                <textarea placeholder="Your Message" class="form-control" name="message" rows="5" required></textarea>
+                                <textarea placeholder="Your Message" id="message" name="message" rows="5" required></textarea>
                           <button>Send Message</button>
                         </Form>
 
