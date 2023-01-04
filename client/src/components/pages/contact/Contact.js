@@ -46,7 +46,7 @@ function Contact(){
 
 
 
-                    {/* <form name="rxcontact" method="post">
+                    <form name="rxcontact" method="post">
                         <input type="hidden" name="form-name" value="rxcontact" />
                         <p>
                             <label htmlFor="name">Name</label> <br />
@@ -63,7 +63,7 @@ function Contact(){
                         <p>
                             <input type="submit" value="Submit message" />
                         </p>
-                        </form> */}
+                        </form>
         </FormContainer>
     )
 }
