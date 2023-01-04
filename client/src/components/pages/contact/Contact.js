@@ -44,25 +44,6 @@ function Contact(){
                                 <textarea placeholder="Your Message" id="message" name="message" rows="5" required></textarea>
                           <button>Send Message</button>
                         </Form>
-
-
-
-                    {/* <Form name="rxcontact" method="post" target="_blank">
-                        
-                        <div>
-                                <label htmlFor="name">Name</label> <br />
-                                <input type="text" id="name" name="name" required />
-
-                                <label htmlFor="email">Email</label> <br />
-                                <input type="email" id="email" name="email" required />
-                        </div>
-
-                            <label htmlFor="message">Message</label> <br />
-                            <textarea id="message" name="message" required></textarea>
-                        <p>
-                            <input type="submit" value="Submit message" />
-                        </p>
-                        </Form> */}
         </FormContainer>
     )
 }
