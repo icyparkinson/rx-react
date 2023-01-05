@@ -232,8 +232,8 @@ function TaperBuilder(){
                 currentCount >= 0 ? 
                     `${currentCount} ${drugForm}${currentCount === 1 ? 
                         "" : 
-                        "s"} left` : 
-                    `Need ${currentCount *-1} ${drugForm}${currentCount === -1 ?
+                        "s"} over` : 
+                    `Need ${currentCount *-1} more ${drugForm}${currentCount === -1 ?
                         "" :
                          "s"}`}</p>}
             {displayTaperAnswer && <p style = {{fontWeight: "bold"}}>Day Supply: {dayCount}</p>}
