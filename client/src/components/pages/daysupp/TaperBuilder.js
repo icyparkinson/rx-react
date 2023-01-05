@@ -34,6 +34,20 @@ import EndTaperLine from "./EndTaperLine"
     }
     `
 
+    const Marker = styled.span`
+    font-size: small;   
+    color: white;
+    background-color: black;
+    padding: 3px 10px;
+    border-radius: 100%;
+    cursor: pointer;
+    `
+
+    const ToolTip = styled.p`
+    font-size: small;
+    font-style: italic;
+    `
+
 function TaperBuilder(){
 
         const [drugForm, setDrugForm] = useState("tablet")
@@ -121,7 +135,7 @@ function TaperBuilder(){
                         if (current <= 0){
                             setDayCount(`Error, not enough ${drugForm}`)
                         }else{
-                            setDayCount(ultimateDay)
+                            setDayCount((ultimateDay).toFixed(2))
                             setCurrentCount(0)
                         }
                         
@@ -139,6 +153,24 @@ function TaperBuilder(){
         
     
         const [currentCount, setCurrentCount] = useState(startingQty)
+
+
+        function calculateFurther(){
+            if (currentCount > 0){
+                setCurrentCount(0)
+                setDayCount((prevDayCount) => {
+                    let lastSig = sigList[sigList.length-1][0] * sigList[sigList.length-1][1]
+                    let furtherDayAnswer = prevDayCount + (currentCount / lastSig)
+                    return furtherDayAnswer.toFixed(2)
+                })
+            }
+        }
+
+        function handleToolTip(){
+            setDisplayTooltip((prevState) => {
+                return (!prevState)
+            })
+        }
     
     
         //DISPLAY STATES
@@ -147,6 +179,7 @@ function TaperBuilder(){
         const [displayLastLine, setDisplayLastLine] = useState(true)
         const [displayCalculate, setDisplayCalculate] = useState(true)
         const [displayTaperAnswer, setDisplayTaperAnswer] = useState(false)
+        const [displayTooltip, setDisplayTooltip] = useState(false)
     
     
         const inputW = {
@@ -195,8 +228,19 @@ function TaperBuilder(){
             <ResetButton onClick={resetSig}>Reset</ResetButton>
             </p>
 
-            {displayTaperAnswer && <p style = {{fontWeight: "bold"}}>{currentCount >= 0 ? `${currentCount} ${drugForm}${currentCount === 1 ? "" : "s"} left` : `Need ${currentCount *-1} ${drugForm}${currentCount === -1 ? "" : "s"}`}</p>}
+            {displayTaperAnswer && <p style = {{fontWeight: "bold"}}>{
+                currentCount >= 0 ? 
+                    `${currentCount} ${drugForm}${currentCount === 1 ? 
+                        "" : 
+                        "s"} left` : 
+                    `Need ${currentCount *-1} ${drugForm}${currentCount === -1 ?
+                        "" :
+                         "s"}`}</p>}
             {displayTaperAnswer && <p style = {{fontWeight: "bold"}}>Day Supply: {dayCount}</p>}
+            {displayTaperAnswer && currentCount > 0 && <CalculateButton onClick={calculateFurther}>Calculate Further</CalculateButton>}
+            {displayTaperAnswer && currentCount > 0 && <Marker onMouseOver={handleToolTip} onMouseLeave={handleToolTip}>?</Marker>}
+            {displayTooltip && <ToolTip>Calculating further will extend the day supply using the last line in the sig until remaining tablets run out.</ToolTip>}
+            
 
             </div>
         </div>
