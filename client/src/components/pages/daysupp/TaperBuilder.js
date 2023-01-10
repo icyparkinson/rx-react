@@ -2,15 +2,15 @@ import React, { useState } from "react"
 import styled from "styled-components"
 import TaperLine from "./TaperLine"
 import EndTaperLine from "./EndTaperLine"
+import TaperAnswer from "./TaperAnswer"
 
-    const SigBox = styled.div`
+const SigBox = styled.div`
     background-color: lightgray;
     margin: auto;
     width: 500px;
     padding: 3px;
-    `
-    
-    const CalculateButton = styled.button`
+`
+const CalculateButton = styled.button`
     padding: 2px 8px;
     margin: 0 5px;
     background-color: #4B0082;
@@ -20,9 +20,8 @@ import EndTaperLine from "./EndTaperLine"
         background-color: #9370DB;
         cursor: pointer;
     }
-    `
-    
-    const ResetButton = styled.button`
+`
+const ResetButton = styled.button`
     padding: 2px 8px;
     margin: 0 5px;
     background-color: black;
@@ -32,23 +31,10 @@ import EndTaperLine from "./EndTaperLine"
         background-color: darkred;
         cursor: pointer;
     }
-    `
-
-    const Marker = styled.span`
-    font-size: small;   
-    color: white;
-    background-color: black;
-    padding: 3px 10px;
-    border-radius: 100%;
-    cursor: pointer;
-    `
-
-    const ToolTip = styled.p`
-    font-size: small;
-    font-style: italic;
-    `
+`
 
 function TaperBuilder(){
+
 
         const [drugForm, setDrugForm] = useState("tablet")
         const[startingQty, setStartingQty] = useState(0)
@@ -59,8 +45,6 @@ function TaperBuilder(){
       
         const [sigList, setSigList] = useState([])
 
-        
-    
         const displaySigList = sigList.map((sigLine, index) => {
             return(
                 <SigBox className="line" key={index*Math.random()}>
@@ -131,8 +115,9 @@ function TaperBuilder(){
         }
     
         const [dayCount, setDayCount] = useState(0)
-    
+
         function handleCalculateTaper(){
+
             if (sigList.length > 0){
                 let finalCount = 0
                 let finalDay = 0
@@ -170,9 +155,6 @@ function TaperBuilder(){
             }
             
         }
-
-        
-        
     
         const [currentCount, setCurrentCount] = useState(startingQty)
 
@@ -188,20 +170,13 @@ function TaperBuilder(){
             }
         }
 
-        function handleToolTip(){
-            setDisplayTooltip((prevState) => {
-                return (!prevState)
-            })
-        }
-    
-    
         //DISPLAY STATES
     
         const [displayTaperLine, setDisplayTaperLine] = useState(true)
         const [displayLastLine, setDisplayLastLine] = useState(true)
         const [displayCalculate, setDisplayCalculate] = useState(true)
         const [displayTaperAnswer, setDisplayTaperAnswer] = useState(false)
-        const [displayTooltip, setDisplayTooltip] = useState(false)
+  
     
     
         const inputW = {
@@ -216,54 +191,47 @@ function TaperBuilder(){
         <h1>Tapering Sig Builder</h1>
             
             <div>
-            <p>Starting quantity:<input 
-            type = "number" 
-            style = {inputW} 
-            value = {startingQty}
-            placeholder = "qty" 
-            min = "0"
-            onChange = {handleStartingQty}>
-            </input> 
-            
-            <select 
-                id="drugForm"
-                value={drugForm}
-                onChange={handleDrugForm}
-                name="drugForm"
-            >
-                <option value="tablet">tablet</option>
-                <option value="capsule">capsule</option>
-            </select>
-            
-            </p>
+                <p>Starting quantity:<input 
+                    type = "number" 
+                    style = {inputW} 
+                    value = {startingQty}
+                    placeholder = "qty" 
+                    min = "0"
+                    onChange = {handleStartingQty}>
+                    </input> 
+                
+                    <select 
+                    id="drugForm"
+                    value={drugForm}
+                    onChange={handleDrugForm}
+                    name="drugForm"
+                    >
+                    <option value="tablet">tablet</option>
+                    <option value="capsule">capsule</option>
+                    </select>
+                
+                </p>
 
+                <div>
+                    <p>Current sig:</p>
+                    {displaySigList}
+                    {displayTaperLine && <div><TaperLine addToSig={addToSig} drugForm={drugForm}/></div>}
+                    {displayLastLine && <div><EndTaperLine addLastLine={addLastLine} drugForm={drugForm}/></div>}
+                </div>
 
-            <div>
-                <p>Current sig:</p>
-                {displaySigList}
-                {displayTaperLine && <div><TaperLine addToSig={addToSig} drugForm={drugForm}/></div>}
-                {displayLastLine && <div><EndTaperLine addLastLine={addLastLine} drugForm={drugForm}/></div>}
-            </div>
+                <p>
+                {displayCalculate && <CalculateButton onClick={handleCalculateTaper}>Calculate</CalculateButton>}
+                <ResetButton onClick={resetSig}>Reset</ResetButton>
+                </p>
 
-            <p>
-            {displayCalculate && <CalculateButton onClick={handleCalculateTaper}>Calculate</CalculateButton>}
-            <ResetButton onClick={resetSig}>Reset</ResetButton>
-            </p>
-
-            {displayTaperAnswer && <p style = {{fontWeight: "bold"}}>{
-                currentCount >= 0 ? 
-                    `${currentCount} ${drugForm}${currentCount === 1 ? 
-                        "" : 
-                        "s"} over` : 
-                    `Need ${currentCount *-1} more ${drugForm}${currentCount === -1 ?
-                        "" :
-                         "s"}`}</p>}
-            {displayTaperAnswer && <p style = {{fontWeight: "bold"}}>Day Supply: {dayCount}</p>}
-            {displayTaperAnswer && currentCount > 0 && <CalculateButton onClick={calculateFurther}>Calculate Further</CalculateButton>}
-            {displayTaperAnswer && currentCount > 0 && <Marker onMouseOver={handleToolTip} onMouseLeave={handleToolTip}>?</Marker>}
-            {displayTooltip && <ToolTip>Calculating further will extend the day supply using the last line in the sig until remaining tablets run out.</ToolTip>}
-            
-
+                {displayTaperAnswer && <TaperAnswer 
+                    displayTaperAnswer={displayTaperAnswer} 
+                    currentCount={currentCount}
+                    drugForm={drugForm}
+                    calculateFurther={calculateFurther}
+                    dayCount={dayCount}
+                    />
+                }
             </div>
         </div>
     )
