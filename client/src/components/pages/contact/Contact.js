@@ -1,6 +1,5 @@
 import React from "react"
 import styled from "styled-components"
-import { NetlifyForm, Honeypot } from 'react-netlify-forms'
 
 const Form = styled.form`
     display: flex;

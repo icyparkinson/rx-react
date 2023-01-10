@@ -58,11 +58,19 @@ function TaperBuilder(){
         }
       
         const [sigList, setSigList] = useState([])
+
+        
     
         const displaySigList = sigList.map((sigLine, index) => {
             return(
-                <SigBox key={index*Math.random()}>
+                <SigBox className="line" key={index*Math.random()}>
                     {index > 0 ? "Then take" : "Take" } {sigLine[0]} {drugForm}{sigLine[0] > 1 ? "s" : null} {index === 0 && "by mouth"} {sigLine[1]} time{sigLine[1] > 1 ? "s" : null} daily {sigLine.length === 3 ? `for ${sigLine[2]} day${sigLine[2] > 1 ? "s" : ""}` : "thereafter"}.
+                    <button 
+                    className="delete-btn"
+                    onClick={(event) => deleteLine(event, index)}
+                >
+                    <i className="gg-trash trash-icon"></i>
+                </button>
                 </SigBox>
             )
             
@@ -80,6 +88,20 @@ function TaperBuilder(){
                     ]
                 })
             }
+        }
+
+        function deleteLine(event, id){
+            setSigList((prevList) => {
+                let newList = []
+                for (let i = 0; i < prevList.length; i++){
+                    if (i === id){
+                        continue
+                    }else{
+                        newList.push(prevList[i])
+                    }
+                }
+                return newList
+            })
         }
     
         function addLastLine(qty, freq){
