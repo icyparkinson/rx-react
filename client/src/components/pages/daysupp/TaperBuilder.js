@@ -1,4 +1,4 @@
-import React, { useState } from "react"
+import React, { useReducer } from "react"
 import styled from "styled-components"
 import TaperLine from "./TaperLine"
 import EndTaperLine from "./EndTaperLine"
@@ -21,6 +21,17 @@ const CalculateButton = styled.button`
         cursor: pointer;
     }
 `
+const BackButton = styled.button`
+    padding: 2px 8px;
+    margin: 0 5px;
+    background-color: blue;
+    color: white;
+    border-radius: 15px;
+    :hover{
+        background-color: darkred;
+        cursor: pointer;
+    }
+`
 const ResetButton = styled.button`
     padding: 2px 8px;
     margin: 0 5px;
@@ -33,151 +44,223 @@ const ResetButton = styled.button`
     }
 `
 
+const ACTIONS = {
+    SET_STARTING_QTY: "set-starting-qty",
+    SET_DRUG_FORM: "set-drug-form",
+    ADD_LINE: "add-line",
+    ADD_LAST_LINE: "add-last-line",
+    DELETE_LINE: "delete-line",
+    CALCULATE_TAPER: "calculate-taper",
+    CALCULATE_FURTHER: "calculate-further",
+    RESET: "reset",
+    BACK: "back"
+}
+
+const initialState={
+    drugForm: "tablet",
+    startingQty: 0,
+    currentCount: 0,
+    sigList: [],
+    dayCount: 0,
+    displayTaperLine: true,
+    displayLastLine: true,
+    displayCalculate: true,
+    displayTaperAnswer: false,
+}
+
+const taperReducer = (state, action) => {
+    switch(action.type) {
+        
+        case ACTIONS.SET_STARTING_QTY:
+            return{
+                ...state,
+                startingQty: action.payload.startingQty
+            }
+
+        case ACTIONS.SET_DRUG_FORM:
+            return{
+                ...state,
+                drugForm: action.payload.drugForm
+            }
+
+        case ACTIONS.ADD_LINE: 
+            return {
+                ...state,
+                sigList: [
+                    ...state.sigList,
+                    newSigLine(action.payload.qty, action.payload.freq, action.payload.days)
+                ]
+            }
+
+        case ACTIONS.ADD_LAST_LINE:
+            return {
+                ...state,
+                sigList: [
+                    ...state.sigList,
+                    newLastLine(action.payload.qty, action.payload.freq)
+                ],
+                displayLastLine: false,
+                displayTaperLine: false
+            }
+
+        case ACTIONS.DELETE_LINE:
+            return {
+                ...state,
+                sigList: state.sigList.filter(line => line.id !== action.payload.id)
+            }
+        
+        case ACTIONS.CALCULATE_TAPER:
+
+            let finalCount = 0
+            let finalDay = 0
+        
+            for (let i = 0; i < state.sigList.length; i++){
+                let line = state.sigList[i].values
+                if (line.length === 3){
+                    let tabsInADay = line[0] * line[1] * line[2]
+                    finalCount += tabsInADay
+                    finalDay += line[2]
+                    
+                }else{
+                    let current = (state.startingQty - finalCount)
+                    let lastSigTabs = line[0] * line[1]
+                    let ultimateDay = finalDay + (current / lastSigTabs)
+    
+                    if (current <= 0){
+                        return({
+                            ...state,
+                            dayCount: `Error, not enough ${state.drugForm}`,
+                            displayTaperAnswer: true,
+                            displayTaperLine: false,
+                            displayLastLine: false
+                        })
+                    }else{
+                        return({
+                            ...state,
+                            dayCount: ultimateDay.toFixed(2),
+                            currentCount: 0,
+                            displayTaperAnswer: true,
+                            displayTaperLine: false,
+                            displayLastLine: false
+                        })
+                    }
+                }   
+            }
+            
+            return({
+                    ...state,
+                    currentCount: state.startingQty - finalCount,
+                    dayCount: finalDay,
+                    displayTaperAnswer: true,
+                    displayTaperLine: false,
+                    displayLastLine: false
+                })
+
+        case ACTIONS.CALCULATE_FURTHER:
+            let sig = state.sigList
+            let lastSig = sig[sig.length-1].values[0] * sig[sig.length-1].values[1]
+            let furtherDayAnswer = state.dayCount + (state.currentCount / lastSig)
+            return {
+                ...state,
+                currentCount: 0,
+                dayCount: furtherDayAnswer.toFixed(2)
+            }
+
+        case ACTIONS.RESET:
+            return initialState
+        
+        case ACTIONS.BACK:
+            return{
+                ...state,
+                displayTaperLine: true,
+                displayLastLine: true,
+                displayCalculate: true,
+                displayTaperAnswer: false,
+            }
+
+        default: 
+            return state
+    }
+}
+
+function newSigLine(qty, freq, days){
+    return {
+        id: Date.now(),
+        values: [parseFloat(qty), parseFloat(freq), parseFloat(days)]
+    }
+}
+
+function newLastLine(qty, freq){
+    return {
+        id: Date.now(),
+        values: [parseFloat(qty), parseFloat(freq)]
+    }
+}
+
+
+
 function TaperBuilder(){
 
+    const [state, dispatch] = useReducer(taperReducer, initialState)        
 
-        const [drugForm, setDrugForm] = useState("tablet")
-        const[startingQty, setStartingQty] = useState(0)
-    
-        function handleStartingQty(e){
-            setStartingQty(e.target.value)
-        }
-      
-        const [sigList, setSigList] = useState([])
-
-        const displaySigList = sigList.map((sigLine, index) => {
+        const displaySigList = state.sigList.map((sigLine, index) => {
             return(
-                <SigBox className="line" key={index*Math.random()}>
-                    {index > 0 ? "Then take" : "Take" } {sigLine[0]} {drugForm}{sigLine[0] > 1 ? "s" : null} {index === 0 && "by mouth"} {sigLine[1]} time{sigLine[1] > 1 ? "s" : null} daily {sigLine.length === 3 ? `for ${sigLine[2]} day${sigLine[2] > 1 ? "s" : ""}` : "thereafter"}.
+                <SigBox key={sigLine.id} className="line" >
+                    {index > 0 ? "Then take" : "Take" } {sigLine.values[0]} {state.drugForm}{sigLine.values[0] > 1 ? "s" : null} {index === 0 && "by mouth"} {sigLine.values[1]} time{sigLine.values[1] > 1 ? "s" : null} daily {sigLine.values.length === 3 ? `for ${sigLine.values[2]} day${sigLine.values[2] > 1 ? "s" : ""}` : "thereafter"}.
                     <button 
                     className="delete-btn"
-                    onClick={(event) => deleteLine(event, index)}
-                >
+                    onClick={() => deleteLine(sigLine.id)}
+                    >
                     <i className="gg-trash trash-icon"></i>
-                </button>
+                    </button>
                 </SigBox>
             )
             
         })
 
+        function handleStartingQty(event){
+            dispatch({type: ACTIONS.SET_STARTING_QTY, payload: {startingQty: event.target.value}})
+        }
+
         function handleDrugForm(event){
-            setDrugForm(event.target.value)
+            dispatch({type: ACTIONS.SET_DRUG_FORM, payload: {drugForm: event.target.value}})
         }
     
         function addToSig(qty, freq, days){
             if (parseFloat(qty) && parseFloat(freq) && parseFloat(days)){
-                setSigList((prevSigList) => {
-                     return [...prevSigList,
-                    [parseFloat(qty), parseFloat(freq), parseFloat(days)]
-                    ]
-                })
+                dispatch({type: ACTIONS.ADD_LINE, payload: {qty: qty, freq: freq, days: days}})
             }
         }
 
-        function deleteLine(event, id){
-            setSigList((prevList) => {
-                let newList = []
-                for (let i = 0; i < prevList.length; i++){
-                    if (i === id){
-                        continue
-                    }else{
-                        newList.push(prevList[i])
-                    }
-                }
-                return newList
-            })
+        function deleteLine(id){
+            dispatch({type: ACTIONS.DELETE_LINE, payload: {id}})
         }
     
         function addLastLine(qty, freq){
-            if (parseFloat(qty) && parseFloat(freq)){
-                setSigList((prevSigList) => {
-                     return [...prevSigList,
-                    [parseFloat(qty), parseFloat(freq)]
-                    ]
-                })
-                setDisplayLastLine(false)
-                setDisplayTaperLine(false)
+            if (parseFloat(qty) && parseFloat(freq) && state.sigList[state.sigList.length-1].values.length !== 2) {
+                dispatch({type: ACTIONS.ADD_LAST_LINE, payload: {qty: qty, freq: freq}})
             }
-      
+        }
+
+        function backSig(){
+            dispatch({type: ACTIONS.BACK})
         }
     
         function resetSig(){
-            setSigList(() => {
-                return []
-            })
-            setCurrentCount(startingQty)
-            setDayCount(0)
-    
-            setDisplayLastLine(true)
-            setDisplayTaperLine(true)
-            setDisplayCalculate(true)
-            setDisplayTaperAnswer(false)
+            dispatch({type: ACTIONS.RESET})
         }
-    
-        const [dayCount, setDayCount] = useState(0)
 
         function handleCalculateTaper(){
-
-            if (sigList.length > 0){
-                let finalCount = 0
-                let finalDay = 0
-        
-                for (let i = 0; i < sigList.length; i++){
-                    let line = sigList[i]
-        
-                    
-        
-                    if (line.length === 3){
-                        let tabsInADay = line[0] * line[1] * line[2]
-                        finalCount += tabsInADay
-                        finalDay += line[2]
-                        setCurrentCount(startingQty - finalCount)
-                        setDayCount(finalDay)
-                        
-                    }else{
-                        let current = (startingQty - finalCount)
-                        let lastSigTabs = line[0] * line[1]
-                        let ultimateDay = finalDay + (current / lastSigTabs)
-        
-                        if (current <= 0){
-                            setDayCount(`Error, not enough ${drugForm}`)
-                        }else{
-                            setDayCount((ultimateDay).toFixed(2))
-                            setCurrentCount(0)
-                        }
-                        
-                    }   
-                }   
-        
-                setDisplayLastLine(false)
-                setDisplayTaperLine(false)
-                setDisplayTaperAnswer(true)
+            if (state.sigList.length > 0){
+                dispatch({type: ACTIONS.CALCULATE_TAPER})
             }
-            
         }
-    
-        const [currentCount, setCurrentCount] = useState(startingQty)
-
 
         function calculateFurther(){
-            if (currentCount > 0){
-                setCurrentCount(0)
-                setDayCount((prevDayCount) => {
-                    let lastSig = sigList[sigList.length-1][0] * sigList[sigList.length-1][1]
-                    let furtherDayAnswer = prevDayCount + (currentCount / lastSig)
-                    return furtherDayAnswer.toFixed(2)
-                })
+            if (state.currentCount > 0){
+               dispatch({type: ACTIONS.CALCULATE_FURTHER})
             }
         }
-
-        //DISPLAY STATES
-    
-        const [displayTaperLine, setDisplayTaperLine] = useState(true)
-        const [displayLastLine, setDisplayLastLine] = useState(true)
-        const [displayCalculate, setDisplayCalculate] = useState(true)
-        const [displayTaperAnswer, setDisplayTaperAnswer] = useState(false)
-  
-    
     
         const inputW = {
             width: "50px",
@@ -194,15 +277,16 @@ function TaperBuilder(){
                 <p>Starting quantity:<input 
                     type = "number" 
                     style = {inputW} 
-                    value = {startingQty}
+                    value = {state.startingQty}
                     placeholder = "qty" 
                     min = "0"
-                    onChange = {handleStartingQty}>
+                    onChange = {handleStartingQty}
+                    >
                     </input> 
                 
                     <select 
                     id="drugForm"
-                    value={drugForm}
+                    value={state.drugForm}
                     onChange={handleDrugForm}
                     name="drugForm"
                     >
@@ -215,21 +299,22 @@ function TaperBuilder(){
                 <div>
                     <p>Current sig:</p>
                     {displaySigList}
-                    {displayTaperLine && <div><TaperLine addToSig={addToSig} drugForm={drugForm}/></div>}
-                    {displayLastLine && <div><EndTaperLine addLastLine={addLastLine} drugForm={drugForm}/></div>}
+                    {state.displayTaperLine && <div><TaperLine addToSig={addToSig} drugForm={state.drugForm}/></div>}
+                    {state.displayLastLine && <div><EndTaperLine addLastLine={addLastLine} drugForm={state.drugForm}/></div>}
                 </div>
 
                 <p>
-                {displayCalculate && <CalculateButton onClick={handleCalculateTaper}>Calculate</CalculateButton>}
+                {state.displayCalculate && <CalculateButton onClick={handleCalculateTaper}>Calculate</CalculateButton>}
+                {state.displayTaperAnswer && <BackButton onClick={backSig}>Back</BackButton>}
                 <ResetButton onClick={resetSig}>Reset</ResetButton>
                 </p>
 
-                {displayTaperAnswer && <TaperAnswer 
-                    displayTaperAnswer={displayTaperAnswer} 
-                    currentCount={currentCount}
-                    drugForm={drugForm}
+                {state.displayTaperAnswer && <TaperAnswer 
+                    displayTaperAnswer={state.displayTaperAnswer} 
+                    currentCount={state.currentCount}
+                    drugForm={state.drugForm}
                     calculateFurther={calculateFurther}
-                    dayCount={dayCount}
+                    dayCount={state.dayCount}
                     />
                 }
             </div>
