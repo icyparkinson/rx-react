@@ -25,7 +25,7 @@ function TaperBuilder(){
                     {index > 0 ? "Then take" : "Take" } {sigLine.values[0]} {state.drugForm}{sigLine.values[0] > 1 ? "s" : null} {index === 0 && "by mouth"} {sigLine.values[1]} time{sigLine.values[1] > 1 ? "s" : null} daily {sigLine.values.length === 3 ? `for ${sigLine.values[2]} day${sigLine.values[2] > 1 ? "s" : ""}` : "thereafter"}.
                     <button 
                     className="delete-btn"
-                    onClick={() => deleteLine(sigLine.id)}
+                    onClick={() => deleteLine(sigLine.id, index)}
                     >
                     <i className="gg-trash trash-icon"></i>
                     </button>
@@ -42,17 +42,17 @@ function TaperBuilder(){
         }
     
         function addToSig(qty, freq, days){
-            if (parseFloat(qty) && parseFloat(freq) && parseFloat(days)){
+            if (parseFloat(qty) && parseFloat(freq) && parseFloat(days) && state.canAddToSigList){
                 dispatch({type: ACTIONS.ADD_LINE, payload: {qty: qty, freq: freq, days: days}})
             }
         }
 
-        function deleteLine(id){
-            dispatch({type: ACTIONS.DELETE_LINE, payload: {id}})
+        function deleteLine(id, index){
+            dispatch({type: ACTIONS.DELETE_LINE, payload: {id: id, index: index}})   
         }
     
         function addLastLine(qty, freq){
-            if (parseFloat(qty) && parseFloat(freq) && state.sigList[state.sigList.length-1].values.length !== 2) {
+            if (parseFloat(qty) && parseFloat(freq) && state.canAddToSigList) {
                 dispatch({type: ACTIONS.ADD_LAST_LINE, payload: {qty: qty, freq: freq}})
             }
         }

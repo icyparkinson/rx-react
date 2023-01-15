@@ -16,6 +16,7 @@ export const initialState={
     currentCount: 0,
     sigList: [],
     dayCount: 0,
+    canAddToSigList: true,
     displayTaperLine: true,
     displayLastLine: true,
     displayCalculate: true,
@@ -68,14 +69,21 @@ export function taperReducer(state, action){
                     ...state.sigList,
                     newLastLine(action.payload.qty, action.payload.freq)
                 ],
-                displayLastLine: false,
-                displayTaperLine: false
+                canAddToSigList: false
             }
 
         case ACTIONS.DELETE_LINE:
-            return {
-                ...state,
-                sigList: state.sigList.filter(line => line.id !== action.payload.id)
+            if (action.payload.index === state.sigList.length-1){
+                return{
+                    ...state,
+                    sigList: state.sigList.filter(line => line.id !== action.payload.id),
+                    canAddToSigList: true
+                }
+            }else{
+                return {
+                    ...state,
+                    sigList: state.sigList.filter(line => line.id !== action.payload.id),
+                }
             }
         
         case ACTIONS.CALCULATE_TAPER:
