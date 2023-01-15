@@ -1,17 +1,5 @@
 import React, { useState } from "react"
-import styled from "styled-components"
-
-const AddButton = styled.button`
-margin-left: 5px;
-padding: 2px 8px;
-background-color: darkgreen;
-color: white;
-border-radius: 15px;
-:hover{
-    background-color: green;
-    cursor: pointer;
-}
-`
+import Button from "../../ui/Button"
 
 const TaperLine = ({addToSig, drugForm}) => {
 
@@ -71,7 +59,7 @@ const TaperLine = ({addToSig, drugForm}) => {
                 onChange = {handleChange}>
             </input>
             days
-            <AddButton onClick={() => addToSig(state.dose, state.freq, state.days)}> ← Add line</AddButton>
+            <Button text={" ← Add line"} styleType={"add"} clickEvent={() => addToSig(state.dose, state.freq, state.days)}/>
         </div>
     )
 }

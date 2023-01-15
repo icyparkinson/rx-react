@@ -1,17 +1,5 @@
 import React, { useState } from "react"
-import styled from "styled-components"
-
-const AddButton = styled.button`
-margin-left: 5px;
-padding: 2px 8px;
-background-color: darkgreen;
-color: white;
-border-radius: 15px;
-:hover{
-    background-color: green;
-    cursor: pointer;
-}
-`
+import Button from "../../ui/Button"
 
 function EndTaperLine({addLastLine, drugForm}){
 
@@ -55,7 +43,7 @@ function EndTaperLine({addLastLine, drugForm}){
             onChange = {handleChange}>
         </input>
         times daily thereafter
-        <AddButton onClick={() => addLastLine(state.dose2, state.freq2)}> ← Add last line</AddButton>
+        <Button text={"← Add last line"} styleType={"add"} clickEvent={() => addLastLine(state.dose2, state.freq2)} />
         </p>
     )
 }

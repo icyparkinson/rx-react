@@ -1,5 +1,6 @@
 import React, { useReducer } from "react"
 import styled from "styled-components"
+import Button from "../../ui/Button"
 import TaperLine from "./TaperLine"
 import EndTaperLine from "./EndTaperLine"
 import TaperAnswer from "./TaperAnswer"
@@ -13,40 +14,6 @@ const SigBox = styled.div`
     width: 500px;
     padding: 3px;
 `
-const CalculateButton = styled.button`
-    padding: 2px 8px;
-    margin: 0 5px;
-    background-color: #4B0082;
-    color: white;
-    border-radius: 15px;
-    :hover{
-        background-color: #9370DB;
-        cursor: pointer;
-    }
-`
-const BackButton = styled.button`
-    padding: 2px 8px;
-    margin: 0 5px;
-    background-color: blue;
-    color: white;
-    border-radius: 15px;
-    :hover{
-        background-color: darkred;
-        cursor: pointer;
-    }
-`
-const ResetButton = styled.button`
-    padding: 2px 8px;
-    margin: 0 5px;
-    background-color: black;
-    color: white;
-    border-radius: 15px;
-    :hover{
-        background-color: darkred;
-        cursor: pointer;
-    }
-`
-
 
 function TaperBuilder(){
 
@@ -152,9 +119,9 @@ function TaperBuilder(){
                 </div>
 
                 <p>
-                {state.displayCalculate && <CalculateButton onClick={handleCalculateTaper}>Calculate</CalculateButton>}
-                {state.displayTaperAnswer && <BackButton onClick={backSig}>Back</BackButton>}
-                <ResetButton onClick={resetSig}>Reset</ResetButton>
+                {state.displayCalculate && <Button text={"Calculate"} styleType={"calculate"} clickEvent={handleCalculateTaper} />}
+                {state.displayTaperAnswer && <Button text={"Back"} styleType={"back"} clickEvent={backSig}/>}
+                <Button text={"Reset"} styleType={"reset"} clickEvent={resetSig} />
                 </p>
 
                 {state.displayTaperAnswer && <TaperAnswer 
