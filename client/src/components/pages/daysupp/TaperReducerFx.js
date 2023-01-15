@@ -98,7 +98,9 @@ export function taperReducer(state, action){
                     if (current <= 0){
                         return({
                             ...state,
-                            dayCount: `Error, not enough ${state.drugForm}`,
+                            dayCount: `Error, need at least ${Math.abs(current) === 0 ? 
+                                `1 more ${state.drugForm}` : 
+                                `${Math.abs(current) +1} more ${state.drugForm}s`}`,
                             displayTaperAnswer: true,
                             displayTaperLine: false,
                             displayLastLine: false
