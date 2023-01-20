@@ -14,18 +14,13 @@ function EndTaperLine({addLastLine, drugForm}){
             ...state, [e.target.name]: value
         });
       }
-
-    const inputW = {
-        width: "50px",
-        margin: "5px",
-        paddingLeft: "2px"
-    }
+    
     
     return(
         <p>
         Then take <input 
             type = "number" 
-            style = {inputW} 
+            className="inputW"
             name = "dose2"
             value = {state.dose2}
             placeholder = "qty" 
@@ -35,7 +30,7 @@ function EndTaperLine({addLastLine, drugForm}){
         {drugForm}s
         <input 
             type = "number" 
-            style = {inputW} 
+            className="inputW"
             name = "freq2"
             value = {state.freq2}
             placeholder = "freq" 

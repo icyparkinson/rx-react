@@ -31,7 +31,7 @@ const TaperLine = ({addToSig, drugForm}) => {
             <p></p>
             Take <input 
                 type = "number" 
-                style = {inputW} 
+                className="inputW" 
                 name = "dose"
                 value = {state.dose}
                 placeholder = "qty" 
@@ -41,7 +41,7 @@ const TaperLine = ({addToSig, drugForm}) => {
             {drugForm}s
             <input 
                 type = "number" 
-                style = {inputW} 
+                className="inputW" 
                 name = "freq"
                 value = {state.freq}
                 placeholder = "freq" 
@@ -51,7 +51,7 @@ const TaperLine = ({addToSig, drugForm}) => {
             times daily for 
             <input 
                 type = "number" 
-                style = {inputW} 
+                className="inputW" 
                 name = "days"
                 value = {state.days}
                 placeholder = "days" 

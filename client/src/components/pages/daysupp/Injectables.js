@@ -21,12 +21,6 @@ function Injectables(){
     return state.mg / state.mL * state.totalVolume / state.dose / state.freq * 7
     }
 
-      const inputW = {
-        width: "50px",
-        margin: "5px",
-        paddingLeft: "2px"
-    }
-
 
 
     return(
@@ -35,7 +29,7 @@ function Injectables(){
             <p>(Use for Ozempic, Victoza, etc.)</p>
             <p>Strength: <input 
                     type = "number" 
-                    style = {inputW}  
+                    className="inputW"  
                     name = "mg" 
                     value = {state.mg} 
                     placeholder = "mg" 
@@ -45,7 +39,7 @@ function Injectables(){
                 /
                     <input 
                     type = "number" 
-                    style = {inputW}  
+                    className="inputW"  
                     name = "mL" 
                     value = {state.mL} 
                     placeholder = "mL" 
@@ -57,7 +51,7 @@ function Injectables(){
             <p>
                 Quantity: <input
                 type = "number" 
-                style = {inputW}  
+                className="inputW"  
                 name = "totalVolume" 
                 value = {state.totalVolume} 
                 placeholder = "mL" 
@@ -69,7 +63,7 @@ function Injectables(){
 
             <p> Taking <input 
                     type = "number" 
-                    style = {inputW} 
+                    className="inputW" 
                     name = "dose" 
                     value = {state.dose} 
                     placeholder = "mg" 
@@ -79,7 +73,7 @@ function Injectables(){
                 mg
                     <input 
                     type = "number" 
-                    style = {inputW} 
+                    className="inputW" 
                     name = "freq" 
                     value = {state.freq} 
                     placeholder = "freq" 

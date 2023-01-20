@@ -77,12 +77,6 @@ function TaperBuilder(){
             }
         }
     
-        const inputW = {
-            width: "50px",
-            margin: "5px",
-            paddingLeft: "2px"
-        }
-    
 
     return(
         <div>
@@ -91,7 +85,7 @@ function TaperBuilder(){
             <div>
                 <p>Starting quantity:<input 
                     type = "number" 
-                    style = {inputW} 
+                    className="inputW"
                     value = {state.startingQty}
                     placeholder = "qty" 
                     min = "0"

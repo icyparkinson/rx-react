@@ -64,11 +64,6 @@ const Abx = () => {
         setShowList((prevState) => !prevState)
     }
 
-    const inputW = {
-        width: "50px",
-        margin: "5px"
-    }
-
     const handleMaxInput = ( {target} ) => {
         const maxInput = target.value
         setMaxDose(maxInput)
@@ -89,11 +84,11 @@ const Abx = () => {
 
             <section style = {{display: "flex", justifyContent: "center", flexDirection: "column"}}>
                 <section style={{margin: "0 20px"}}>
-                    <p>Max dose/day:    <input style = {inputW} name = "maxDose" value = {maxDose} onChange = {handleMaxInput}></input>mg/kg</p>
-                    <p> Taking          <input type = "number" style = {inputW} name = "vol" value = {state.vol} placeholder = "vol" onChange = {handleChange}></input>     mL
-                        at              <input type = "number" style = {inputW}  name = "mg" value = {state.mg} placeholder = "mg" onChange = {handleChange}></input>       /
-                                        <input type = "number" style = {inputW}  name = "mL" value = {state.mL} placeholder = "mL" onChange = {handleChange}></input>       mg/mL 
-                                        <input type = "number" style = {inputW} name = "freq" value = {state.freq} placeholder = "freq" onChange = {handleChange}></input>  times per day.
+                    <p>Max dose/day:    <input className="inputW" name = "maxDose" value = {maxDose} onChange = {handleMaxInput}></input>mg/kg</p>
+                    <p> Taking          <input type = "number" className="inputW" name = "vol" value = {state.vol} placeholder = "vol" onChange = {handleChange}></input>     mL
+                        at              <input type = "number" className="inputW"  name = "mg" value = {state.mg} placeholder = "mg" onChange = {handleChange}></input>       /
+                                        <input type = "number" className="inputW"  name = "mL" value = {state.mL} placeholder = "mL" onChange = {handleChange}></input>       mg/mL 
+                                        <input type = "number" className="inputW" name = "freq" value = {state.freq} placeholder = "freq" onChange = {handleChange}></input>  times per day.
                     </p>
                     <p>Total dose prescribed per day: {dosePrescribed()} mg</p>
                     <p style = {{fontWeight: "bold"}}>Child should weigh at least: {childWeight()} lbs</p>
@@ -109,13 +104,13 @@ const Abx = () => {
                 <h1>Calculate Strength Conversions</h1>
             <section>
                 <p>Starting with: 
-                   <input type = "number" style = {inputW} name = "startmL" value = {state.startmL} placeholder = "mL" onChange={handleChange}></input>mL
-                of <input type = "number" style = {inputW} name = "startmg" value = {state.startmg} placeholder = "mg" onChange = {handleChange}></input>
-                 / <input type = "number" style = {inputW} name = "startVol" value = {state.startVol} placeholder = "mL" onChange = {handleChange}></input>mg/mL</p>
+                   <input type = "number" className="inputW" name = "startmL" value = {state.startmL} placeholder = "mL" onChange={handleChange}></input>mL
+                of <input type = "number" className="inputW" name = "startmg" value = {state.startmg} placeholder = "mg" onChange = {handleChange}></input>
+                 / <input type = "number" className="inputW" name = "startVol" value = {state.startVol} placeholder = "mL" onChange = {handleChange}></input>mg/mL</p>
                 <p>(Equal to {totalDose()}mg)</p>
                 <p>Converting to: 
-                    <input type = "number" style = {inputW} name = "endmg" value = {state.endmg} placeholder="mg" onChange = {handleChange}></input> / 
-                    <input type = "number" style = {inputW} name = "endmL" value = {state.endmL} placeholder="mL" onChange = {handleChange}></input>mg/mL</p>
+                    <input type = "number" className="inputW" name = "endmg" value = {state.endmg} placeholder="mg" onChange = {handleChange}></input> / 
+                    <input type = "number" className="inputW" name = "endmL" value = {state.endmL} placeholder="mL" onChange = {handleChange}></input>mg/mL</p>
                 <p style = {{fontWeight: "bold"}}>Equivalent to: {convertedDose()} mL</p>
             </section>
 

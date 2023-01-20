@@ -73,3 +73,9 @@
   top: -7px;
   left: -2px
  } 
+
+ .inputW{
+    width: 50px;
+    margin: 5px;
+    padding-left: 2px;
+ }
