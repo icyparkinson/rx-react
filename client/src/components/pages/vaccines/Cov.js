@@ -1,24 +1,18 @@
-import React, { useState } from "react"
+import React from "react"
 
 import Imm from "./Imm"
 import Most from "./Most"
 import Vials from "./Vials"
 
+import useShowItem from "./useShowItem"
+
 const Cov = () => {
 
-    const [showItem, setShowItem] = useState({
+    const [showItem, handleShowItem] = useShowItem({
         most: false,
         imm: false,
         vials: false
     })
-
-    const handleShowItem = (e) => {
-        let title = e.target.getAttribute("name")
-        let status = showItem[title]
-        setShowItem({
-            ...showItem, [title]: !status
-        })
-    }
 
     return(
         <section>

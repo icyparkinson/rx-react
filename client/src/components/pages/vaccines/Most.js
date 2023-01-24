@@ -1,23 +1,15 @@
-import React, { useState } from "react"
+import React from "react"
+import useShowItem from "./useShowItem"
 
 const Most = () => {
 
-    const [showItem, setShowItem] = useState({
+    const [showItem, handleShowItem] = useShowItem({
         tots: false,
         peds: false,
         adults: false,
         jj: false
 
     })
-
-    const handleShowItem = (e) => {
-        let title = e.target.getAttribute("name")
-        let status = showItem[title]
-        setShowItem({
-            ...showItem, [title]: !status
-        })
-    }
-
 
     return (
         <section>

@@ -1,24 +1,17 @@
-import React, { useState } from "react"
+import React from "react"
 import Pneum from "./Pneum"
 import Cov from "./Cov"
 import Line from "../../ui/Line"
+import useShowItem from "./useShowItem"
 
 
 
 const Vaccine = () => {
 
-    const [showItem, setShowItem] = useState({
+    const [showItem, handleShowItem] = useShowItem({
         pneum: false,
         cov: false
     })
-
-    const handleShowItem = (e) => {
-        let title = e.target.getAttribute("name")
-        let status = showItem[title]
-        setShowItem({
-            ...showItem, [title]: !status
-        })
-    }
 
 
     return(
