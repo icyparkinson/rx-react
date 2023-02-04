@@ -2,6 +2,10 @@ import "./App.css"
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom"
 import WorkSpace from "./components/ui/WorkSpace"
 import NavBar from "./components/ui/NavBar"
+import ReactGA from "react-ga"
+
+const TRACKING_ID = "UA-256316483-1"
+ReactGA.initialize(TRACKING_ID)
 
 
 const App = () =>{

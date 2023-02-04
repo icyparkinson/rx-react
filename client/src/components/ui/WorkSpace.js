@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useEffect } from "react"
 import { Routes, Route } from "react-router-dom"
 import Home from "../pages/Home"
 import DayCalc from "../pages/daycalc/DayCalc"
@@ -8,7 +8,11 @@ import Abx from "../pages/abx/Abx"
 import Handy from "../pages/handy/Handy"
 import Contact from "../pages/contact/Contact"
 import Notes from "../pages/notes/Notes"
+import ReactGA from "react-ga"
 
+useEffect(() => {
+    ReactGA.pageview(window.location.pathname)
+}, [])
 
 const WorkSpace = () => {
     return(
