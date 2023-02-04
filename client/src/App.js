@@ -2,9 +2,9 @@ import "./App.css"
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom"
 import WorkSpace from "./components/ui/WorkSpace"
 import NavBar from "./components/ui/NavBar"
-import ReactGA from "react-ga"
+import ReactGA from "react-ga4"
 
-const TRACKING_ID = "UA-256316483-1"
+const TRACKING_ID = process.env.REACT_APP_GP4_TRACKING_CODE
 ReactGA.initialize(TRACKING_ID)
 
 

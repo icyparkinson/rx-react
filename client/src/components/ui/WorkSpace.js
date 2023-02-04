@@ -8,7 +8,8 @@ import Abx from "../pages/abx/Abx"
 import Handy from "../pages/handy/Handy"
 import Contact from "../pages/contact/Contact"
 import Notes from "../pages/notes/Notes"
-import ReactGA from "react-ga"
+import ReactGA from "react-ga4"
+
 
 useEffect(() => {
     ReactGA.pageview(window.location.pathname)
