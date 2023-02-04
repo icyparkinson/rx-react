@@ -11,11 +11,14 @@ import Notes from "../pages/notes/Notes"
 import ReactGA from "react-ga4"
 
 
-useEffect(() => {
-    ReactGA.pageview(window.location.pathname)
-}, [])
+
 
 const WorkSpace = () => {
+
+    useEffect(() => {
+        ReactGA.send(window.location.pathname)
+    }, [])
+
     return(
         <div style = {{margin: "100 auto"}}>
             <section style = {workSpaceStyle}>
