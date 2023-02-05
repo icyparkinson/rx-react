@@ -14,6 +14,9 @@ import Notes from "../pages/notes/Notes"
 
 const WorkSpace = () => {
 
+    useEffect(() => {
+        ReactGA.send(window.location.pathname)
+    }, [])
 
     return(
         <div style = {{margin: "100 auto"}}>
