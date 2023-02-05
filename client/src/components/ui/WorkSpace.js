@@ -17,7 +17,7 @@ import ReactGA from "react-ga4"
 const WorkSpace = () => {
 
     useEffect(() => {
-        ReactGA.send(window.location.pathname)
+        ReactGA.send({ hitType: "pageview", page: "/my-path" });
     }, [])
 
     return(
