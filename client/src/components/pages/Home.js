@@ -1,5 +1,6 @@
 import React from "react"
 import styled from "styled-components"
+import Line from "../ui/Line"
 
 const TopSection = styled.section`
     margin-bottom: 50px;
@@ -11,6 +12,10 @@ const Title = styled.h1`
     font-family: "Fredoka One";
 `
 
+const Update = styled.p`
+    background-color: yellow
+`
+
 const Home = () => {
     return(
         <TopSection>
@@ -19,6 +24,12 @@ const Home = () => {
             <h2 style = {{fontSize: "2rem"}}>Yay!!</h2>
             <p style = {{margin: "20px"}}>Hi there~ I hope I can help you today. To start, select from one of the options above!</p>
             <em>**Use me at your discretion! Rx Buddy takes no responsibility or liability.**</em>
+            <p></p>
+
+            <Line />
+            <Update>
+                ~~ Most recent UPDATE: Added Victoza option to taper builder! ~~
+            </Update>
         </TopSection>
             
            
