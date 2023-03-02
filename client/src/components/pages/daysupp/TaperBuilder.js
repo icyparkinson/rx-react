@@ -20,9 +20,25 @@ function TaperBuilder(){
     const [state, dispatch] = useReducer(taperReducer, initialState)        
 
         const displaySigList = state.sigList.map((sigLine, index) => {
+            console.log(sigLine)
             return(
                 <SigBox key={sigLine.id} className="line" >
                     {index > 0 ? "Then take" : "Take" } {sigLine.values[0]} {state.drugForm}{sigLine.values[0] > 1 ? "s" : null} {index === 0 && "by mouth"} {sigLine.values[1]} time{sigLine.values[1] > 1 ? "s" : null} daily {sigLine.values.length === 3 ? `for ${sigLine.values[2]} day${sigLine.values[2] > 1 ? "s" : ""}` : "thereafter"}.
+                    <button 
+                    className="delete-btn"
+                    onClick={() => deleteLine(sigLine.id, index)}
+                    >
+                    <i className="gg-trash trash-icon"></i>
+                    </button>
+                </SigBox>
+            )
+        })
+
+        const injectionSigList = state.sigList.map((sigLine, index) => {
+            console.log(sigLine)
+            return(
+                <SigBox key={sigLine.id} className="line" >
+                    {index > 0 ? "Then inject" : "Inject" } {sigLine.values[0]} mg under the skin daily {sigLine.values.length === 3 ? `for ${sigLine.values[2]} week${sigLine.values[2] > 1 ? "s" : ""}` : "thereafter"}.
                     <button 
                     className="delete-btn"
                     onClick={() => deleteLine(sigLine.id, index)}
@@ -98,16 +114,18 @@ function TaperBuilder(){
                     value={state.drugForm}
                     onChange={handleDrugForm}
                     name="drugForm"
+                    disabled={state.disableDrugOptions}
                     >
                     <option value="tablet">tablet</option>
                     <option value="capsule">capsule</option>
+                    <option value="injection">mL of victoza</option>
                     </select>
                 
                 </p>
 
                 <div>
                     <p>Current sig:</p>
-                    {displaySigList}
+                    {state.drugForm === "injection" ? injectionSigList : displaySigList}
                     {state.displayTaperLine && <div><TaperLine addToSig={addToSig} drugForm={state.drugForm}/></div>}
                     {state.displayLastLine && <div><EndTaperLine addLastLine={addLastLine} drugForm={state.drugForm}/></div>}
                 </div>

@@ -41,10 +41,10 @@ function TaperAnswer({displayTaperAnswer, currentCount, drugForm, calculateFurth
         <div>
             {displayTaperAnswer && <p style = {{fontWeight: "bold"}}>{
                 currentCount >= 0 ? 
-                    `${currentCount} ${drugForm}${currentCount === 1 ? 
+                    `${currentCount} ${drugForm === "injection" ? "mL" : drugForm}${currentCount === 1 ? 
                         "" : 
                         "s"} over` : 
-                    `Need ${currentCount *-1} more ${drugForm}${currentCount === -1 ?
+                    `Need ${(currentCount *-1).toFixed(2)} more ${drugForm === "injection" ? "mL" : drugForm}${currentCount === -1 ?
                         "" :
                          "s"}`}</p>}
             {displayTaperAnswer && <p style = {{fontWeight: "bold"}}>Day Supply: {dayCount}</p>}

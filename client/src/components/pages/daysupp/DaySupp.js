@@ -2,6 +2,7 @@ import React from "react"
 import Line from "../../ui/Line"
 import Injectables from "./Injectables"
 import TaperBuilder from "./TaperBuilder"
+import VictozaBuilder from "./VictozaBuilder"
 
 
 const DaySupp = () => {

@@ -12,6 +12,7 @@ export const ACTIONS = {
 
 export const initialState={
     drugForm: "tablet",
+    disableDrugOptions: false,
     startingQty: 0,
     currentCount: 0,
     sigList: [],
@@ -90,41 +91,90 @@ export function taperReducer(state, action){
 
             let finalCount = 0
             let finalDay = 0
-        
-            for (let i = 0; i < state.sigList.length; i++){
-                let line = state.sigList[i].values
-                if (line.length === 3){
-                    let tabsInADay = line[0] * line[1] * line[2]
-                    finalCount += tabsInADay
-                    finalDay += line[2]
-                    
-                }else{
-                    let current = (state.startingQty - finalCount)
-                    let lastSigTabs = line[0] * line[1]
-                    let ultimateDay = finalDay + (current / lastSigTabs)
-    
-                    if (current <= 0){
-                        return({
-                            ...state,
-                            dayCount: `Error, need at least ${Math.abs(current) === 0 ? 
-                                `1 more ${state.drugForm}` : 
-                                `${Math.abs(current) +1} more ${state.drugForm}s`}`,
-                            displayTaperAnswer: true,
-                            displayTaperLine: false,
-                            displayLastLine: false
-                        })
-                    }else{
-                        return({
-                            ...state,
-                            dayCount: ultimateDay.toFixed(2),
-                            currentCount: 0,
-                            displayTaperAnswer: true,
-                            displayTaperLine: false,
-                            displayLastLine: false
-                        })
+
+            if (state.drugForm === "injection"){
+                for (let i = 0; i < state.sigList.length; i++){
+                    let line = state.sigList[i].values
+                    if (line.length === 3){
+                        let mgInAWeek = line[0] * 7 * line[2] 
+                        let mLInAWeek = Number((mgInAWeek / 6).toFixed(2))
+                        finalCount += mLInAWeek
+                        finalDay += line[2] * 7
                     }
-                }   
+
+                    else{
+                        let current = state.startingQty - finalCount
+                        let lastSigMl = (line[0] * line[1] / 6).toFixed(2)
+                        let ultimateDay = finalDay + current / lastSigMl
+
+                        if (current <= 0){
+                            let absCurrent = Math.abs(current)
+
+                            return({
+                                ...state,
+                                dayCount: `Error, need at least ${absCurrent === 0 ? 
+                                    `0.1 more mLs` : 
+                                    `${   (absCurrent + Number(lastSigMl)).toFixed(2)   } more mLs`}`,
+                                displayTaperAnswer: true,
+                                displayTaperLine: false,
+                                displayLastLine: false,
+                                disableDrugOptions: true
+                            })
+                        }else{
+                            return({
+                                ...state,
+                                dayCount: ultimateDay.toFixed(2),
+                                currentCount: 0,
+                                displayTaperAnswer: true,
+                                displayTaperLine: false,
+                                displayLastLine: false,
+                                disableDrugOptions: true
+                            })
+                        }
+
+                    }
+                }
+
+            }else{
+                for (let i = 0; i < state.sigList.length; i++){
+                    let line = state.sigList[i].values
+                    if (line.length === 3){
+                        let tabsInADay = line[0] * line[1] * line[2]
+                        finalCount += tabsInADay
+                        finalDay += line[2]
+                        
+                    }else{
+                        let current = (state.startingQty - finalCount)
+                        let lastSigTabs = line[0] * line[1]
+                        let ultimateDay = finalDay + (current / lastSigTabs)
+        
+                        if (current <= 0){
+                            return({
+                                ...state,
+                                dayCount: `Error, need at least ${Math.abs(current) === 0 ? 
+                                    `1 more ${state.drugForm}` : 
+                                    `${Math.abs(current) +1} more ${state.drugForm}s`}`,
+                                displayTaperAnswer: true,
+                                displayTaperLine: false,
+                                displayLastLine: false,
+                                disableDrugOptions: true
+                            })
+                        }else{
+                            return({
+                                ...state,
+                                dayCount: ultimateDay.toFixed(2),
+                                currentCount: 0,
+                                displayTaperAnswer: true,
+                                displayTaperLine: false,
+                                displayLastLine: false,
+                                disableDrugOptions: true
+                            })
+                        }
+                    }   
+                }
+
             }
+        
             
             return({
                     ...state,
@@ -132,17 +182,32 @@ export function taperReducer(state, action){
                     dayCount: finalDay,
                     displayTaperAnswer: true,
                     displayTaperLine: false,
-                    displayLastLine: false
+                    displayLastLine: false,
+                    disableDrugOptions: true
                 })
+
+                
 
         case ACTIONS.CALCULATE_FURTHER:
             let sig = state.sigList
-            let lastSig = sig[sig.length-1].values[0] * sig[sig.length-1].values[1]
-            let furtherDayAnswer = state.dayCount + (state.currentCount / lastSig)
-            return {
-                ...state,
-                currentCount: 0,
-                dayCount: furtherDayAnswer.toFixed(2)
+            if (state.drugForm === "injection"){
+                let lastSig = sig[sig.length-1].values[0] * sig[sig.length-1].values[1] / 6
+                let furtherDayAnswer = state.dayCount + (state.currentCount / lastSig)
+
+                return {
+                    ...state,
+                    currentCount: 0,
+                    dayCount: furtherDayAnswer.toFixed(2)
+                }
+
+            }else{
+                let lastSig = sig[sig.length-1].values[0] * sig[sig.length-1].values[1]
+                let furtherDayAnswer = state.dayCount + (state.currentCount / lastSig)
+                return {
+                    ...state,
+                    currentCount: 0,
+                    dayCount: furtherDayAnswer.toFixed(2)
+                }
             }
 
         case ACTIONS.RESET:
