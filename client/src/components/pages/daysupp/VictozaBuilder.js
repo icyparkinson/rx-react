@@ -7,7 +7,7 @@ function VictozaBuilder(){
     }
 
     return(
-        <div>Victoza Builder</div>
+        <div>Main: Victoza Builder</div>
     )
 }
 
