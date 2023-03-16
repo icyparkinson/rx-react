@@ -6,6 +6,10 @@ function VictozaBuilder(){
         console.log("I want something logged here.")
     }
 
+    const anotherFunction = () => {
+        console.log("Wee!")
+    }
+
     return(
         <div>Main: Victoza Builder</div>
     )
