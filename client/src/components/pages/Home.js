@@ -26,10 +26,10 @@ const Home = () => {
             <em>**Use me at your discretion! Rx Buddy takes no responsibility or liability.**</em>
             <p></p>
 
-            <Line />
+            /* <Line />
             <Update>
                 ~~ Most recent UPDATE: Added Victoza option to taper builder! ~~
-            </Update>
+            </Update> */
         </TopSection>
             
            
