@@ -13,7 +13,7 @@ const Title = styled.h1`
 `
 
 const Update = styled.p`
-    background-color: yellow
+    background-color: yellow;
 `
 
 const Home = () => {
@@ -25,11 +25,6 @@ const Home = () => {
             <p style = {{margin: "20px"}}>Hi there~ I hope I can help you today. To start, select from one of the options above!</p>
             <em>**Use me at your discretion! Rx Buddy takes no responsibility or liability.**</em>
             <p></p>
-
-            /* <Line />
-            <Update>
-                ~~ Most recent UPDATE: Added Victoza option to taper builder! ~~
-            </Update> */
         </TopSection>
             
            
