@@ -90,8 +90,8 @@ const Abx = () => {
                                         <input type = "number" className="inputW"  name = "mL" value = {state.mL} placeholder = "mL" onChange = {handleChange}></input>       mg/mL 
                                         <input type = "number" className="inputW" name = "freq" value = {state.freq} placeholder = "freq" onChange = {handleChange}></input>  times per day.
                     </p>
-                    <p>Total dose prescribed per day: {dosePrescribed()} mg</p>
-                    <p style = {{fontWeight: "bold"}}>Child should weigh at least: {childWeight()} lbs</p>
+                    <p>Total dose prescribed per day: {dosePrescribed() > 0 ? dosePrescribed() : "0"} mg</p>
+                    <p style = {{fontWeight: "bold"}}>Child should weigh at least: {childWeight() > 0 ? childWeight() : "0"} lbs</p>
                 </section>
 
                 <p onClick= {handleList} style = {{textDecoration: "underline", cursor: "pointer"}}>Click to {showList === true ? "hide" : "show" } Notes</p>
@@ -107,11 +107,11 @@ const Abx = () => {
                    <input type = "number" className="inputW" name = "startmL" value = {state.startmL} placeholder = "mL" onChange={handleChange}></input>mL
                 of <input type = "number" className="inputW" name = "startmg" value = {state.startmg} placeholder = "mg" onChange = {handleChange}></input>
                  / <input type = "number" className="inputW" name = "startVol" value = {state.startVol} placeholder = "mL" onChange = {handleChange}></input>mg/mL</p>
-                <p>(Equal to {totalDose()}mg)</p>
+                <p>(Equal to {totalDose() > 0 ? totalDose() : "0"} mg)</p>
                 <p>Converting to: 
                     <input type = "number" className="inputW" name = "endmg" value = {state.endmg} placeholder="mg" onChange = {handleChange}></input> / 
                     <input type = "number" className="inputW" name = "endmL" value = {state.endmL} placeholder="mL" onChange = {handleChange}></input>mg/mL</p>
-                <p style = {{fontWeight: "bold"}}>Equivalent to: {convertedDose()} mL</p>
+                <p style = {{fontWeight: "bold"}}>Equivalent to: {convertedDose() > 0 ? convertedDose() : "0"} mL</p>
             </section>
 
         </div>

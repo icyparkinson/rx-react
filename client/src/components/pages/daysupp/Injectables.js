@@ -82,7 +82,7 @@ function Injectables(){
                     </input>  
                 times per week.
             </p>
-                <p style = {{fontWeight: "bold"}}>Day Supply: {daySupply()}</p>
+                <p style = {{fontWeight: "bold"}}>Day Supply: {daySupply() > 0 ? daySupply() : "Awaiting input"}</p>
         </div>
 
     )
